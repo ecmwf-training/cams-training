@@ -1,0 +1,1599 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>TROPOMI Ozone Profile retrievals &#8212; CAMS Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2-ozone-profile-tropomi-analysis';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Comparing TROPOMI NO2 columns with the CAMS regional air quality ensemble product" href="3-no2-tropomi-cams-regional.html" />
+    <link rel="prev" title="Comparing satellite data with models" href="1-satellite-model-comparison-theory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/CAMS–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/CAMS–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Atmosphere Monitoring Service (CAMS) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ads.atmosphere.copernicus.eu/user-guide">ADS User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="da-read-write.html">Import, Reduce, Export</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualisation Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vis-maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-time-series.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-profiles.html">Profile Plots and Zonal Means</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Product Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cams-global-forecast-aeronet.html">CAMS global forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-regional-forecast.html">CAMS regional forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-global-reanalysis.html">CAMS global reanalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-emissions.html">Emissions inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-mos.html">CAMS Model Output Statistics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="proc-aq-index.html">European Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-glob-eaqi.html">Global Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-ozone.html">Antarctic Ozone Hole Monitoring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Averaging kernels tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="1-satellite-model-comparison-theory.html">Satellite and model comparison theory</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">ozone satellite and model comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-no2-tropomi-cams-regional.html">NO2 satellite and model comparison</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/">Tutorials from the Copernicus Climate Change Service (C3S)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-training/cams-training/main?urlpath=tree/2-ozone-profile-tropomi-analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training/issues/new?title=Issue%20on%20page%20%2F2-ozone-profile-tropomi-analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/2-ozone-profile-tropomi-analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TROPOMI Ozone Profile retrievals</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tropomi-ozone-profile-retrievals">
+<h1>TROPOMI Ozone Profile retrievals<a class="headerlink" href="#tropomi-ozone-profile-retrievals" title="Permalink to this heading">#</a></h1>
+<p>Authors: Henk Eskes, Serena Di Pede, Felipe Cifuentes, KNMI <br>
+Contact: <a class="reference external" href="mailto:henk&#46;eskes&#37;&#52;&#48;knmi&#46;nl">henk<span>&#46;</span>eskes<span>&#64;</span>knmi<span>&#46;</span>nl</a> <br>
+September 2024</p>
+<p><strong>This notebook can be run on free online platforms, such as Binder, Kaggle and Colab, or they can be accessed from GitHub. The links to run this notebook in these environments are provided here, but please note they are not supported by ECMWF.</strong></p>
+<p><a class="reference external" href="https://mybinder.org/v2/gh/ecmwf-training/2025-cams-act7-training/main?labpath=06-averaging-kernels/2-ozone-profile-tropomi-analysis.ipynb"><img alt="binder" src="https://mybinder.org/badge.svg" /></a>
+<a class="reference external" href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-training/2025-cams-act7-training/blob/main/06-averaging-kernels/2-ozone-profile-tropomi-analysis.ipynb"><img alt="kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
+<a class="reference external" href="https://colab.research.google.com/github/ecmwf-training/2025-cams-act7-training/blob/main/06-averaging-kernels/2-ozone-profile-tropomi-analysis.ipynb"><img alt="colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a>
+<a class="reference external" href="https://github.com/ecmwf-training/2025-cams-act7-training/blob/main/06-averaging-kernels/2-ozone-profile-tropomi-analysis.ipynb"><img alt="github" src="https://img.shields.io/badge/Open%20in-GitHub-black?logo=github" /></a></p>
+<p>In this notebook we will explore the TROPOMI ozone profile product. <br>
+This is an optimal estimation retrieval following the theory described in the book of Rodgers, 2000. <br>
+The product includes an ozone profile, the averaging kernel and the error covariance matrix, and the a-priori profile.</p>
+<p>All TROPOMI operational products come with three documents:<br></p>
+<ol class="arabic simple">
+<li><p>The Product Readme File (PRF): This provides an overview of code changes and versions and some high level recommendations for use.<br></p></li>
+<li><p>The Product User Manual (PUM): Describing the fields in the data file and data use.<br></p></li>
+<li><p>The Algorithm Theoretical Baseline Document (ATBD): Describing the retrieval algorithm in detail.</p></li>
+</ol>
+<p>These documents are provided by Copernicus/ESA on the Sentinel-5P Document Library page:<br>
+<a class="reference external" href="https://sentiwiki.copernicus.eu/web/s5p-products">https://sentiwiki.copernicus.eu/web/s5p-products</a></p>
+<p>The ozone profile retrieval and validation of the product are described in a recent paper:<br>
+Arno Keppens, Serena Di Pede et al., <br>
+<i>5 years of Sentinel-5P TROPOMI operational ozone profiling and
+geophysical validation using ozonesonde and lidar ground-based networks </i><br>
+<a class="reference external" href="https://doi.org/10.5194/amt-17-3969-2024">https://doi.org/10.5194/amt-17-3969-2024</a></p>
+<p>In the subroutine “read_single_profile” we open the ozone retrieval file and read one profile, <br>
+for a specified scanline i_t (along-track index) and viewing angle (i_x, across-track index).</p>
+<p>The routine reads the most relevant variables from the file.
+The ozone profile is then converted to ozone density, unit molecules per centimeter cube, but is also available in Dobson Units.</p>
+<p>Exercise: Go through the routine and try to understand the meaning of the fields that are read from the file, and why they are relevant.</p>
+<p>We also introduce the routines to do the plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uncomment the line below if you are using Google Colab or Kaggle</span>
+<span class="c1">#!pip install netCDF4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">netCDF4</span> <span class="k">as</span> <span class="nn">nc</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Specify the path of your data directory</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;/content&#39;</span> <span class="c1"># note that &#39;/content&#39; is the default directory in Colab. Other platforms may require a different path.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Download the data from a remote repository</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data_url</span> <span class="o">=</span> <span class="s1">&#39;https://sites.ecmwf.int/training/2025-cams-act7-training/averaging-kernel-notebook-2-data.zip&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">data_url</span><span class="p">)</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;averaging-kernel-notebook-2-data.zip&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Download also a Python script with helper functions</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">script_url</span> <span class="o">=</span> <span class="s1">&#39;https://raw.githubusercontent.com/ecmwf-training/2025-cams-act7-training/refs/heads/main/06-averaging-kernels/utils_o3.py&#39;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">script_url</span><span class="p">)</span>
+<span class="n">file_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;utils_o3.py&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Extract the zip file</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/averaging-kernel-notebook-2-data.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipObj</span><span class="p">:</span>
+   <span class="c1"># Extract all the contents of zip file in current directory</span>
+   <span class="n">zipObj</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We define functions for reading and plotting data</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_single_profile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">i_t</span><span class="p">,</span> <span class="n">i_x</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function reads one single profile from the netCDF4 file of the ozone profile</span>
+<span class="sd">    at the row i_x, scanline i_t.</span>
+
+<span class="sd">    It returns the result of the reading as a dictionary.</span>
+
+<span class="sd">    Ozone profiles are in molec. cm-3, while columns are in Dobson units,</span>
+<span class="sd">    altitude in km and pressure in hPa.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># print(&#39;\n-------------------------------------------------------------------------------------------------&#39;)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;reading&#39;</span><span class="p">,</span> <span class="n">file_name</span><span class="p">)</span>
+
+    <span class="n">res</span><span class="o">=</span><span class="p">{}</span> <span class="c1"># define output struct</span>
+
+    <span class="k">with</span> <span class="n">nc</span><span class="o">.</span><span class="n">Dataset</span><span class="p">(</span><span class="n">file_name</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+
+        <span class="n">time_epoch</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;T&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/delta_time&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">units</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]))</span>
+        <span class="n">delta_time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;PRODUCT/delta_time&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,:],</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">&#39;timedelta64[ms]&#39;</span><span class="p">)</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_epoch</span> <span class="o">+</span> <span class="n">delta_time</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/altitude&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="mf">1e-3</span> <span class="c1"># altitude in km</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/pressure&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="mf">1e-2</span> <span class="c1"># air pressure converted in hPa</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/temperature&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;tropopause_temp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/temperature_at_tropopause&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;tropopause_pres&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/pressure_at_tropopause&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="mf">1e-2</span> <span class="c1"># pressure in hPa</span>
+        
+        <span class="n">conversion_to_molcm3</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">getncattr</span><span class="p">(</span><span class="s1">&#39;multiplication_factor_to_convert_to_molecules_percm3&#39;</span><span class="p">)</span>
+        <span class="n">conversion_to_molcm2</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_total_column&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">getncattr</span><span class="p">(</span><span class="s1">&#39;multiplication_factor_to_convert_to_molecules_percm2&#39;</span><span class="p">)</span>
+        <span class="n">conversion_to_molcm6</span> <span class="o">=</span> <span class="p">(</span><span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/ozone_profile_error_covariance_matrix&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">getncattr</span><span class="p">(</span><span class="s1">&#39;multiplication_factor_to_convert_to_molecules2_percm6&#39;</span><span class="p">)</span>
+        <span class="n">conversion_to_du</span> <span class="o">=</span> <span class="mf">2241.15</span>
+        
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_molcm3</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile_precision&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_molcm3</span> <span class="c1"># noise error</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile_smoothing&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_molcm3</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/averaging_kernel&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:,:]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_cov_matrix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/ozone_profile_error_covariance_matrix&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:,:]</span><span class="o">*</span><span class="n">conversion_to_molcm6</span>        
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;to3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_total_column&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;to3_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_total_column_precision&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;tropo3&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_tropospheric_column&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;tropo3_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_tropospheric_column_precision&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_subc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile_subcolumns&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_subc_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/ozone_profile_subcolumns_precision&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_du</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/ozone_profile_apriori&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_molcm3</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/ozone_profile_apriori_precision&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">,:]</span> <span class="o">*</span> <span class="n">conversion_to_molcm3</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;to3_ap&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/ozone_total_column_apriori&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="o">*</span> <span class="n">conversion_to_molcm2</span> <span class="c1"># atmosphere_mole_content_of_ozone</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;refl330nm&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/reflectance_at_330nm&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span> <span class="c1"># TOA reflectance for cloud fraction determination</span>
+
+<span class="c1">#         res[&#39;qa_value&#39;] = int( 100 * f[&#39;/PRODUCT/qa_value&#39;][0,i_t,i_x] + 0.5)</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;qa_value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/qa_value&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+    
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/latitude&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/longitude&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;sza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/GEOLOCATIONS/solar_zenith_angle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vcd&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/GEOLOCATIONS/viewing_azimuth_angle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;vza&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/GEOLOCATIONS/viewing_zenith_angle&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;surface_albedo&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/surface_albedo&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;cloudfrac&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/INPUT_DATA/cloud_fraction_crb_ozone_window&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;dfs&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/degrees_of_freedom_ozone&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;conv_status&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/convergence_status&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;rms_fit&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/root_mean_square_error_of_fit&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+        <span class="n">res</span><span class="p">[</span><span class="s1">&#39;costf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s1">&#39;/PRODUCT/SUPPORT_DATA/DETAILED_RESULTS/cost_function&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">,</span><span class="n">i_t</span><span class="p">,</span><span class="n">i_x</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">res</span>
+
+<span class="k">def</span> <span class="nf">plot_pixel</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">):</span>
+    
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function plots the ozone profile, a-priori profile and relative errors.</span>
+
+<span class="sd">    You need to provide the dictionary of the data,</span>
+<span class="sd">    the orbit, row and scanline.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">fix</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Position </span><span class="se">\n</span><span class="s1"> Lat: </span><span class="si">{:.2f}</span><span class="s1">, lon: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Orbit </span><span class="si">{}</span><span class="s1">, scanline=</span><span class="si">{}</span><span class="s1">, row=</span><span class="si">{}</span><span class="s1">, </span><span class="se">\n</span><span class="s1"> quality=</span><span class="si">{}</span><span class="s1">, DFS=</span><span class="si">{:.1f}</span><span class="s1">, TOZ = </span><span class="si">{:.1f}</span><span class="s1"> DU </span><span class="se">\n</span><span class="s1"> surface albedo=</span><span class="si">{:.2f}</span><span class="s1">, cloud fraction=</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">,</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;qa_value&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;dfs&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;to3&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;surface_albedo&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;cloudfrac&#39;</span><span class="p">]))</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">markerfacecolor</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;retrieval&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span><span class="s1">&#39;k-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;a-priori&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">53</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number Density [10¹² molec. cm⁻³]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="c1">## Compute errors</span>
+
+    <span class="n">error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span> <span class="p">)</span>
+    <span class="n">val_m_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">error</span> <span class="p">)</span><span class="o">*</span><span class="mf">1e-12</span>
+    <span class="n">val_p_error</span> <span class="o">=</span> <span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">error</span> <span class="p">)</span><span class="o">*</span><span class="mf">1e-12</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">val_m_error</span><span class="p">[:</span><span class="mi">26</span><span class="p">],</span> <span class="n">val_p_error</span><span class="p">[:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.50</span> <span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span> <span class="mi">100</span><span class="o">*</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">/</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rel diff retrieval/apriori/&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="o">-</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_ap_prec&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_ap_prec&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span><span class="p">,</span><span class="n">label</span><span class="o">=</span> <span class="s1">&#39;apriori error&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="o">-</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_tot&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_tot&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightgray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.75</span> <span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;smooth+noise errors&#39;</span> <span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">fill_betweenx</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="o">-</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_prec&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_prec&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;lightcoral&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;noise error&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">53</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper right&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Error and Difference [%]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span> 
+
+<span class="k">def</span> <span class="nf">plot_ak</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">):</span>
+    
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">33</span><span class="p">))</span>
+    <span class="n">fix</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Orbit </span><span class="si">{}</span><span class="s1">, scanline=</span><span class="si">{}</span><span class="s1">, row=</span><span class="si">{}</span><span class="s1">, </span><span class="se">\n</span><span class="s1"> quality=</span><span class="si">{}</span><span class="s1">, DFS=</span><span class="si">{:.1f}</span><span class="s1">, TOZ = </span><span class="si">{:.1f}</span><span class="s1"> DU </span><span class="se">\n</span><span class="s1"> surface albedo=</span><span class="si">{:.2f}</span><span class="s1">, cloud fraction=</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">,</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;qa_value&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;dfs&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;to3&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;surface_albedo&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;cloudfrac&#39;</span><span class="p">]))</span>
+
+    <span class="k">for</span> <span class="n">lev</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">alt</span><span class="o">=</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][</span><span class="n">lev</span><span class="p">]</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">][</span><span class="n">lev</span><span class="p">,</span> <span class="p">:</span><span class="mi">26</span><span class="p">],</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;lev=</span><span class="si">{}</span><span class="s1">, h=</span><span class="si">{:.1f}</span><span class="s1">km&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">lev</span><span class="p">,</span><span class="n">alt</span><span class="p">),</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">lev</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Altitude [km]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;AK [-]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    
+    <span class="k">for</span> <span class="n">lev</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="mi">5</span><span class="p">):</span>
+        <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">][</span><span class="n">lev</span><span class="p">,</span> <span class="p">:</span><span class="mi">26</span><span class="p">],</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">lev</span><span class="p">])</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;AK [-]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c1"># plt.savefig(&#39;./avk_o3pr.png&#39;,facecolor=&#39;white&#39;,dpi=100)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>    
+
+<span class="k">def</span> <span class="nf">plot_sens_dof</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">):</span>
+
+    <span class="n">rows_sensitivity</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">diag_ak</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">diag</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">])</span>
+    <span class="n">dof_profile</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">trace</span><span class="p">(</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">])</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The total profile number of DOF is </span><span class="si">{:.2f}</span><span class="s1">.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dof_profile</span><span class="p">))</span>
+    
+    <span class="n">colors</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">jet</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">33</span><span class="p">))</span>
+    <span class="n">fix</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Orbit </span><span class="si">{}</span><span class="s1">, scanline=</span><span class="si">{}</span><span class="s1">, row=</span><span class="si">{}</span><span class="s1">, </span><span class="se">\n</span><span class="s1"> quality=</span><span class="si">{}</span><span class="s1">, DFS=</span><span class="si">{:.1f}</span><span class="s1">, TOZ = </span><span class="si">{:.1f}</span><span class="s1"> DU </span><span class="se">\n</span><span class="s1"> surface albedo=</span><span class="si">{:.2f}</span><span class="s1">, cloud fraction=</span><span class="si">{:.1f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">orbit</span><span class="p">,</span> <span class="n">it</span><span class="p">,</span> <span class="n">ix</span><span class="p">,</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;qa_value&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;dfs&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;to3&#39;</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;surface_albedo&#39;</span><span class="p">][</span><span class="mi">2</span><span class="p">],</span> <span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;cloudfrac&#39;</span><span class="p">]))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">rows_sensitivity</span><span class="p">[:</span><span class="mi">26</span><span class="p">],</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Altitude [km]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;AK Rows sensitivity&#39;</span><span class="p">)</span>
+    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">diag_ak</span><span class="p">[:</span><span class="mi">26</span><span class="p">],</span><span class="n">o3pr_data</span><span class="p">[</span><span class="s1">&#39;alt&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;royalblue&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span><span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Total DOF: </span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">dof_profile</span><span class="p">))</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span> <span class="o">=</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span><span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Altitude [km]&#39;</span><span class="p">,</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">,</span> <span class="n">labelsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>    
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;AK diagonal&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we will inspect a near-real time data file, which you can identify by the label “NRTI”. <br>
+The NRT data is provided as granules, which are parts of a satellite orbit. <br>
+The NRTI files become available a few hours after sensing. <br>
+In contrast, offline “OFFL” and reprocessed “RPRO” datasets are provided for full orbits, and the files are bigger.<br>
+But the files contain the same fields, and the code provided works also for OFFL and RPRO files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_name</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/S5P_NRTI_L2__O3__PR_20240314T110748_20240314T111248_33256_03_020600_20240314T115305.nc&#39;</span>
+<span class="n">orbit</span><span class="o">=</span><span class="s1">&#39;33256&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The first two timestamps in the file name are the timerange of the data. As you can see, the granule file stores about 5 minutes of TROPOMI data. The last time stamp is the processing time. It is clear the processing was done in real time! The file name also contains the orbit number (33256) and processor version (02.06.00).</p>
+<p>This granule was chosen because it contains substantial gradients in ozone. These are reflecting the dynamical flow in the atmosphere, and especially in spring we observe these gradients over northern midlatitudes. You will look at one pixel (ozone profile) with a high ozone column, and one with a low column within the granule.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Select one pixel over an area where we measure a high total column ozone concentration</span>
+<span class="n">it_high</span><span class="o">=</span><span class="mi">16</span>
+<span class="n">ix_high</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">o3pr_high</span><span class="o">=</span><span class="n">read_single_profile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">it_high</span><span class="p">,</span> <span class="n">ix_high</span><span class="p">)</span>
+
+<span class="c1">### Select one pixel over an area where we measure a (relatively) low total column ozone concentration</span>
+<span class="n">it_low</span><span class="o">=</span><span class="mi">51</span>
+<span class="n">ix_low</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">o3pr_low</span><span class="o">=</span><span class="n">read_single_profile</span><span class="p">(</span><span class="n">file_name</span><span class="p">,</span> <span class="n">it_low</span><span class="p">,</span> <span class="n">ix_low</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>reading C:/Users/cxcs/act7_Oct2025_AK_notebooks/data_O3/S5P_NRTI_L2__O3__PR_20240314T110748_20240314T111248_33256_03_020600_20240314T115305.nc
+reading C:/Users/cxcs/act7_Oct2025_AK_notebooks/data_O3/S5P_NRTI_L2__O3__PR_20240314T110748_20240314T111248_33256_03_020600_20240314T115305.nc
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">latitude_low</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">longitude_low</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> 
+<span class="n">latitude_high</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">longitude_high</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> 
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Location of the low ozone measurement:  lon = &quot;</span><span class="p">,</span><span class="n">longitude_low</span><span class="p">,</span> <span class="s2">&quot;, lat = &quot;</span><span class="p">,</span> <span class="n">latitude_low</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Location of the high ozone measurement: lon = &quot;</span><span class="p">,</span><span class="n">longitude_high</span><span class="p">,</span> <span class="s2">&quot;, lat = &quot;</span><span class="p">,</span> <span class="n">latitude_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Location of the low ozone measurement:  lon =  5.394725 , lat =  51.444263
+Location of the high ozone measurement: lon =  22.289955 , lat =  47.909824
+</pre></div>
+</div>
+</div>
+</div>
+<p>The precision (noise error) and smoothing error of the retrieval, and the assumed error on the a-priori are provided in absolute terms. Here we convert these errors into relative errors.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate relative errors, as percentage</span>
+<span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_smooth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_ap_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap_prec&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_tot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+
+<span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_smooth&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_ap_prec&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap_prec&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+<span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;perc_o3_ndens_tot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_prec&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_smooth&#39;</span><span class="p">])</span> <span class="o">/</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">]</span> <span class="o">*</span> <span class="mf">100.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<h3>Plot the profile and the relative uncertainties</h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_pixel</span><span class="p">(</span><span class="n">o3pr_low</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it_low</span><span class="p">,</span> <span class="n">ix_low</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Position 
+ Lat: 51.44, lon: 5.39
+</pre></div>
+</div>
+<img alt="_images/6125e470ed5e553c42d025bccbbf22b1e63bbd1177a340ba11bfbaa27ce7f9b5.png" src="_images/6125e470ed5e553c42d025bccbbf22b1e63bbd1177a340ba11bfbaa27ce7f9b5.png" />
+</div>
+</div>
+<h4>Low ozone column case</h4>
+<p>The low ozone profile shows ozone densities which are substantially reduced compared to the a-priori profile (black) around the ozone maximum, but enhanced in the free troposphere.</p>
+<p>Note the text above the plot which contains important information:</p>
+<ul class="simple">
+<li><p>Each TROPOMI retrieval comes with a “qa_value”. Before using the data it is important to remove data with a low qa_value. According to the Product Readme File pixels with a qa_value ≦ 0.5 should not be used, and measurements for which the qa_value ≦ 0.8 should
+be used with care. In this case the qa_value = 1, so no warnings or issues arose during the retrieval.</p></li>
+<li><p>By integrating the vertical profile we obtain a total ozone column. This is 289.4 Dobson Units for this profile.</p></li>
+<li><p>It is a clear-sky footprint with a relatively low surface albedo of 0.04.</p></li>
+<li><p>The DFS is the computed “Degrees of Freedom of Signal” (see Rodgers, 2000). For this retrieval this is 5.8. It indicates that the retrieval extracted close to 6 independent pieces of information. Roughly speaking, the retrieval is able to determine mean ozone amounts for layers of about 8 km thick.</p></li>
+</ul>
+<p>The error plot shows the assumed uncertainty in the a-priori profile shape (20% in the stratosphere, 50% in the troposphere). The noise error in the retrieval is much smaller, showing that the mean concentrations are well constrained.</p>
+<p>The plot also shows the smoothing error. This reflects estimated differences between high-resolution actual ozone profiles and the smoothed 8-km resolution retrieved profiles. This smoothing error is much larger than the noise error. See Rodgers, 2000, for more detail.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_pixel</span><span class="p">(</span><span class="n">o3pr_high</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it_high</span><span class="p">,</span> <span class="n">ix_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Position 
+ Lat: 47.91, lon: 22.29
+</pre></div>
+</div>
+<img alt="_images/705b7e742d17c4206e6b06521555f0c5daf27433b86dcf93915d0a62e11534da.png" src="_images/705b7e742d17c4206e6b06521555f0c5daf27433b86dcf93915d0a62e11534da.png" />
+</div>
+</div>
+<p>The high ozone case shows significantly enhanced ozone values in the 10-20 km range, compared to the a-priori profile. Total ozone is now 385.2 DU, about 100 DU larger that the low column case. The surface albedo is higher, and the DFS is also a bit higher, around 6.1.</p>
+<h3>Averaging Kernel Analysis </h3><p>We visualise the Averaging Kernel (AK) matrix by plotting the columns of the matrix (density of the AK) for levels 0, 5, .. 25 Level 0 is the surface level. Above level 25 (higher stratosphere, mesosphere) the retrieval becomes more uncertain.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plot_ak</span><span class="p">(</span><span class="n">o3pr_high</span><span class="p">,</span><span class="n">orbit</span><span class="p">,</span> <span class="n">it_high</span><span class="p">,</span> <span class="n">ix_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6937c7594c8ed8c0b06e84ce65871c8c7f7ca32a58e57b589de6c84ae66dcbef.png" src="_images/6937c7594c8ed8c0b06e84ce65871c8c7f7ca32a58e57b589de6c84ae66dcbef.png" />
+</div>
+</div>
+<p>The AK profiles for levels in the range between about 10 and 40 km altitude (levels 5, 10, 15, 20) show a peak value in the level for which the column was extracted (e.g. the green curve peaks close to 28 km altitude). This indicates that the TROPOMI spectrum contains ozone information at this level. The width of the AK gives an impression of the vertical resolution (of the order of 5-10 km in this 10-40 km range).</p>
+<p>Question: Note that the kernels also show negative values. What does this mean?</p>
+<p>The spectrum contains very little ozone information for levels close to the surface and at the higher stratospheric altitudes above 40 km. <br>
+At the surface the kernel values become very small, and the kernel does no longer have it’s peak at the level 0 altitude.<br>
+For the highest levels the kernels start to show strong oscillations over the whole stratospheric range.</p>
+<p>Exercise: plot also the averaging kernels for the low ozone case, and for other levels. Are there major differences?</p>
+<h3>Level sensitivity and DOF</h3>
+<p>The averaging kernel (AK) matrix contains other interesting information (Rodgers, 2000).</p>
+<p>The <b>AK row sum</b> give the level sensitivity, how much information comes from the measurement or a-priori. If the sensitivity is equal to 1, it means that the information at that level comes from the measurement, while (1-row_sensitivity) comes from the a-priori.</p>
+<p>The <b>diagonal elements of the AK matrix</b> gives the amount of information from each specific level. <br>
+The trace of the AK matrix, or the sum over the layers, is the total degrees of freedom for signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># plot_sens_dof(o3pr_low,orbit, it_low, ix_low)</span>
+<span class="n">plot_sens_dof</span><span class="p">(</span><span class="n">o3pr_high</span><span class="p">,</span> <span class="n">orbit</span><span class="p">,</span> <span class="n">it_high</span><span class="p">,</span> <span class="n">ix_high</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The total profile number of DOF is 5.97.
+</pre></div>
+</div>
+<img alt="_images/22f52e9c97b41014c7fe435bea0c7416e1a8b014820a1d6ac90480e258c223a4.png" src="_images/22f52e9c97b41014c7fe435bea0c7416e1a8b014820a1d6ac90480e258c223a4.png" />
+</div>
+</div>
+<p>In the range 10-40 km the row sensitivity is close to 1, showing the retrieved profile is well constrained by the TROPOMI data. In the lower troposphere this sensitivity is strongly reduced. At the surface the profile moves towards the a-priori value.</p>
+<p>In the range 10-40 km we have to sum up 3-5 layers to obtain one piece of information (corresponding to 5-10 km layers).<br>
+The sum of the diagonal AK elements is close to the reported DFS = 6.1 (which is computed in a slightly different way in the retrieval code).</p>
+<h3>Comparison with CAMS forecasts</h3>
+<p>We start by importing some extra packages:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">from</span> <span class="nn">utils_o3</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note that if you have trouble importing the above, particularly if using cloud platforms such as Kaggle or Colab, you can also simply copy and paste into a cell the code here: <a class="reference external" href="https://raw.githubusercontent.com/ecmwf-training/2025-cams-act7-training/refs/heads/main/06-averaging-kernels/utils_o3.py">https://raw.githubusercontent.com/ecmwf-training/2025-cams-act7-training/refs/heads/main/06-averaging-kernels/utils_o3.py</a></p>
+<p>We will now compare the retrieved profile with the CAMS forecast for the same date, time and location.</p>
+<p>The ozone content of the file has been obtained from the CAMS ADS. We extracted the CAMS 12h ozone forecast starting from 0:00 on 14 March 2024.</p>
+<p>This 12utc field is close to the overpass time of TROPOMI over Europe. As simplified “time interpolation” we just selected this one time to match the satellite time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cams_path</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/CAMS_O3_forecast_20240314_12utc.nc&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Note, however, that apart from the ozone data we also need information about the pressure levels (CAMS runs on 137 hybrid layers). But these are not provided by default by the CAMS ADS. What we need extra are:<br></p>
+<ul class="simple">
+<li><p>The surface pressure. <br></p></li>
+<li><p>The hybrid level coefficients A and B for the 137 layers. (Note that the A, B coefficients are static and have to be retrieved just once.)</p></li>
+</ul>
+<p>With these we can compute the level pressure of layer <i>l</i> :<br>
+p<sub>l</sub> = A<sub>l</sub> + B<sub>l</sub> p<sub>surf</sub></p>
+<p>Coefficient B = 1 and A = 0 at the surface. The lowest level follows the terrain and time-location dependent pressure at the surface.<br>
+Coefficient B becomes 0 in the upper part of the atmosphere. Here the model levels become fixed pressure levels.</p>
+<p>In the data file supplied with this notebook we have added the surface pressure and level coefficients to the ozone field extracted from the ADS.</p>
+<p>Open the netCDF file with the 3D ozone field and extract needed variables: ozone, A, B, sp.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cams_glob</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">cams_path</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s see what is in the file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cams_glob</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:                   (time: 1, level: 137, lat: 451, lon: 900,
+                               model_level_coefficients: 138)
+Coordinates:
+  * level                     (level) float64 1.0 2.0 3.0 ... 135.0 136.0 137.0
+  * model_level_coefficients  (model_level_coefficients) int64 0 1 2 ... 136 137
+  * lon                       (lon) float64 0.0 0.4 0.8 ... 358.8 359.2 359.6
+  * lat                       (lat) float64 90.0 89.6 89.2 ... -89.2 -89.6 -90.0
+Dimensions without coordinates: time
+Data variables:
+    o3                        (time, level, lat, lon) float32 ...
+    sp                        (time, lat, lon) float32 ...
+    a                         (model_level_coefficients) float32 ...
+    b                         (model_level_coefficients) float32 ...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-f331f024-4edc-4ca5-bcf8-d6070a98f3a6' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-f331f024-4edc-4ca5-bcf8-d6070a98f3a6' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>time</span>: 1</li><li><span class='xr-has-index'>level</span>: 137</li><li><span class='xr-has-index'>lat</span>: 451</li><li><span class='xr-has-index'>lon</span>: 900</li><li><span class='xr-has-index'>model_level_coefficients</span>: 138</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-1671fc80-edff-44b7-a54c-8707a46f5a54' class='xr-section-summary-in' type='checkbox'  checked><label for='section-1671fc80-edff-44b7-a54c-8707a46f5a54' class='xr-section-summary' >Coordinates: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>level</span></div><div class='xr-var-dims'>(level)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>1.0 2.0 3.0 ... 135.0 136.0 137.0</div><input id='attrs-1d3425e6-33bb-4844-b51c-ade645e499ae' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-1d3425e6-33bb-4844-b51c-ade645e499ae' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c3c9755d-e8a8-4575-a44c-48f42099dd89' class='xr-var-data-in' type='checkbox'><label for='data-c3c9755d-e8a8-4575-a44c-48f42099dd89' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  1.,   2.,   3.,   4.,   5.,   6.,   7.,   8.,   9.,  10.,  11.,  12.,
+        13.,  14.,  15.,  16.,  17.,  18.,  19.,  20.,  21.,  22.,  23.,  24.,
+        25.,  26.,  27.,  28.,  29.,  30.,  31.,  32.,  33.,  34.,  35.,  36.,
+        37.,  38.,  39.,  40.,  41.,  42.,  43.,  44.,  45.,  46.,  47.,  48.,
+        49.,  50.,  51.,  52.,  53.,  54.,  55.,  56.,  57.,  58.,  59.,  60.,
+        61.,  62.,  63.,  64.,  65.,  66.,  67.,  68.,  69.,  70.,  71.,  72.,
+        73.,  74.,  75.,  76.,  77.,  78.,  79.,  80.,  81.,  82.,  83.,  84.,
+        85.,  86.,  87.,  88.,  89.,  90.,  91.,  92.,  93.,  94.,  95.,  96.,
+        97.,  98.,  99., 100., 101., 102., 103., 104., 105., 106., 107., 108.,
+       109., 110., 111., 112., 113., 114., 115., 116., 117., 118., 119., 120.,
+       121., 122., 123., 124., 125., 126., 127., 128., 129., 130., 131., 132.,
+       133., 134., 135., 136., 137.])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>model_level_coefficients</span></div><div class='xr-var-dims'>(model_level_coefficients)</div><div class='xr-var-dtype'>int64</div><div class='xr-var-preview xr-preview'>0 1 2 3 4 5 ... 133 134 135 136 137</div><input id='attrs-f3097ba0-cdd7-4250-916a-d9e014cf2544' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-f3097ba0-cdd7-4250-916a-d9e014cf2544' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5ad83906-6de7-43a8-9832-e0c2774c3602' class='xr-var-data-in' type='checkbox'><label for='data-5ad83906-6de7-43a8-9832-e0c2774c3602' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,
+        14,  15,  16,  17,  18,  19,  20,  21,  22,  23,  24,  25,  26,  27,
+        28,  29,  30,  31,  32,  33,  34,  35,  36,  37,  38,  39,  40,  41,
+        42,  43,  44,  45,  46,  47,  48,  49,  50,  51,  52,  53,  54,  55,
+        56,  57,  58,  59,  60,  61,  62,  63,  64,  65,  66,  67,  68,  69,
+        70,  71,  72,  73,  74,  75,  76,  77,  78,  79,  80,  81,  82,  83,
+        84,  85,  86,  87,  88,  89,  90,  91,  92,  93,  94,  95,  96,  97,
+        98,  99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111,
+       112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125,
+       126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137], dtype=int64)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0 0.4 0.8 ... 358.8 359.2 359.6</div><input id='attrs-32115d46-a5e5-42a1-9e44-29f560623b14' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-32115d46-a5e5-42a1-9e44-29f560623b14' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3549dd36-07a7-43be-ba6c-24309e3d040b' class='xr-var-data-in' type='checkbox'><label for='data-3549dd36-07a7-43be-ba6c-24309e3d040b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([  0. ,   0.4,   0.8, ..., 358.8, 359.2, 359.6])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>90.0 89.6 89.2 ... -89.6 -90.0</div><input id='attrs-14227d81-61b7-4d1f-96a2-bbb5573fdb1f' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-14227d81-61b7-4d1f-96a2-bbb5573fdb1f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2e91a6eb-3670-472a-80b8-0fa528835e00' class='xr-var-data-in' type='checkbox'><label for='data-2e91a6eb-3670-472a-80b8-0fa528835e00' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([ 90. ,  89.6,  89.2, ..., -89.2, -89.6, -90. ])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-32b87c5b-bd22-4ceb-9b45-d576685e7c03' class='xr-section-summary-in' type='checkbox'  checked><label for='section-32b87c5b-bd22-4ceb-9b45-d576685e7c03' class='xr-section-summary' >Data variables: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>o3</span></div><div class='xr-var-dims'>(time, level, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-98fd64b0-57b1-4634-b92d-f86a118c6d43' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-98fd64b0-57b1-4634-b92d-f86a118c6d43' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1dea8582-6ee4-4cca-8b81-f54c4c4eaa12' class='xr-var-data-in' type='checkbox'><label for='data-1dea8582-6ee4-4cca-8b81-f54c4c4eaa12' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[55608300 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sp</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3a5b9532-6a79-414b-b329-c67ab475d64d' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-3a5b9532-6a79-414b-b329-c67ab475d64d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d77b83f2-a8e8-427a-bb0a-2b06b6e67264' class='xr-var-data-in' type='checkbox'><label for='data-d77b83f2-a8e8-427a-bb0a-2b06b6e67264' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[405900 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>a</span></div><div class='xr-var-dims'>(model_level_coefficients)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-70a0c1b0-612e-4a77-9742-c86b3ac7b6bb' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-70a0c1b0-612e-4a77-9742-c86b3ac7b6bb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e8a31747-5673-4c0f-8730-7683604ac55d' class='xr-var-data-in' type='checkbox'><label for='data-e8a31747-5673-4c0f-8730-7683604ac55d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[138 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>b</span></div><div class='xr-var-dims'>(model_level_coefficients)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-321a9971-46e7-4998-9319-fb713b4c87f9' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-321a9971-46e7-4998-9319-fb713b4c87f9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b5b16acd-8baa-48a0-acd6-0a0836f88fe8' class='xr-var-data-in' type='checkbox'><label for='data-b5b16acd-8baa-48a0-acd6-0a0836f88fe8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>[138 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-05b68e6a-84a7-402e-8d07-f308bae674ee' class='xr-section-summary-in' type='checkbox'  ><label for='section-05b68e6a-84a7-402e-8d07-f308bae674ee' class='xr-section-summary' >Indexes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>level</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f2123f70-0aad-435c-a2f8-7c103ae0f19b' class='xr-index-data-in' type='checkbox'/><label for='index-f2123f70-0aad-435c-a2f8-7c103ae0f19b' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([  1.0,   2.0,   3.0,   4.0,   5.0,   6.0,   7.0,   8.0,   9.0,
+               10.0,
+              ...
+              128.0, 129.0, 130.0, 131.0, 132.0, 133.0, 134.0, 135.0, 136.0,
+              137.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;level&#x27;, length=137))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>model_level_coefficients</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bb86bff3-8aca-471c-b6b4-bd3b7dad2f0e' class='xr-index-data-in' type='checkbox'/><label for='index-bb86bff3-8aca-471c-b6b4-bd3b7dad2f0e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Int64Index([  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,
+            ...
+            128, 129, 130, 131, 132, 133, 134, 135, 136, 137],
+           dtype=&#x27;int64&#x27;, name=&#x27;model_level_coefficients&#x27;, length=138))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c136dad4-6d98-4362-9f5c-e4d5caf48e8f' class='xr-index-data-in' type='checkbox'/><label for='index-c136dad4-6d98-4362-9f5c-e4d5caf48e8f' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([               0.0,                0.4,                0.8,
+              1.2000000000000002,                1.6,                2.0,
+                             2.4,                2.8, 3.1999999999999997,
+              3.5999999999999996,
+              ...
+               355.9999999999969, 356.39999999999685,  356.7999999999968,
+               357.1999999999968,  357.5999999999968, 357.99999999999676,
+              358.39999999999674,  358.7999999999967,  359.1999999999967,
+                           359.6],
+             dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=900))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-85fae904-a77c-4cf4-9c06-e40bcd91dd4d' class='xr-index-data-in' type='checkbox'/><label for='index-85fae904-a77c-4cf4-9c06-e40bcd91dd4d' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Float64Index([              90.0,               89.6,  89.19999999999999,
+               88.79999999999998,  88.39999999999998,  87.99999999999997,
+               87.59999999999997,  87.19999999999996,  86.79999999999995,
+               86.39999999999995,
+              ...
+              -86.40000000000036, -86.80000000000037, -87.20000000000037,
+              -87.60000000000038, -88.00000000000038, -88.40000000000039,
+               -88.8000000000004,  -89.2000000000004,  -89.6000000000004,
+                           -90.0],
+             dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=451))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-aea84a23-931d-42e5-8e53-e892a2818aae' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-aea84a23-931d-42e5-8e53-e892a2818aae' class='xr-section-summary'  title='Expand/collapse section'>Attributes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Note that in CAMS the layers start at the top of the atmosphere, and the last layer is the surface layer.<br>
+We used “flip” to reverse the order, so from now on the first layer is the surface layer.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat</span> <span class="o">=</span> <span class="n">cams_glob</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">cams_glob</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span>
+
+<span class="n">cams_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">cams_glob</span><span class="o">.</span><span class="n">a</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">cams_b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">cams_glob</span><span class="o">.</span><span class="n">b</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">sp</span> <span class="o">=</span> <span class="n">cams_glob</span><span class="o">.</span><span class="n">sp</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:]</span>                         <span class="c1"># Units: ln [Pa]</span>
+<span class="n">o3_cams</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">flip</span><span class="p">(</span><span class="n">cams_glob</span><span class="o">.</span><span class="n">o3</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">,:,:,:],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span> <span class="c1"># Units: Kg/Kg</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next we compute the (three-dimensional) full level (centre of the layer) and half level (layer interfaces) pressures and altitudes for this CAMS field:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pres_fl</span><span class="p">,</span> <span class="n">pres_hl</span> <span class="o">=</span> <span class="n">CAMS_level_pressures</span><span class="p">(</span><span class="n">o3_cams</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">cams_a</span><span class="p">,</span> <span class="n">cams_b</span><span class="p">)</span>
+
+<span class="c1">#print ( pres_fl[:,0,0] )</span>
+<span class="c1">#print ( pres_hl[:,0,0] )</span>
+<span class="c1">#print ( sp[0,0] )</span>
+<span class="c1">#print ( len(pres_fl[:,0,0]), len(pres_hl[:,0,0]) )</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We now perform a horizontal interpolation to the two low and high ozone TROPOMI pixels. <br>
+This is done by simply selecting the CAMS grid cell containing the centre of the TROPOMI pixel. <br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">index_lat_low</span><span class="p">,</span> <span class="n">index_lon_low</span> <span class="o">=</span> <span class="n">index_point</span><span class="p">(</span><span class="n">latitude_low</span><span class="p">,</span><span class="n">longitude_low</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="p">)</span>
+<span class="n">index_lat_high</span><span class="p">,</span> <span class="n">index_lon_high</span> <span class="o">=</span> <span class="n">index_point</span><span class="p">(</span><span class="n">latitude_high</span><span class="p">,</span><span class="n">longitude_high</span><span class="p">,</span><span class="n">lat</span><span class="p">,</span><span class="n">lon</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s check these indices</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;Low ozone CAMS grid cell  lat, lon = &quot;</span><span class="p">,</span> <span class="n">lat</span><span class="p">[</span><span class="n">index_lat_low</span><span class="p">],</span><span class="n">lon</span><span class="p">[</span><span class="n">index_lon_low</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;High ozone CAMS grid cell lat, lon = &quot;</span><span class="p">,</span> <span class="n">lat</span><span class="p">[</span><span class="n">index_lat_high</span><span class="p">],</span><span class="n">lon</span><span class="p">[</span><span class="n">index_lon_high</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Low ozone CAMS grid cell  lat, lon =  51.59999999999968 5.2
+High ozone CAMS grid cell lat, lon =  47.999999999999694 22.399999999999984
+</pre></div>
+</div>
+</div>
+</div>
+<p>Extract the CAMS ozone profile for the high and low ozone cases</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o3_cams_low</span>  <span class="o">=</span> <span class="n">o3_cams</span><span class="p">[:,</span><span class="n">index_lat_low</span><span class="p">,</span><span class="n">index_lon_low</span><span class="p">]</span>
+<span class="n">o3_cams_high</span> <span class="o">=</span> <span class="n">o3_cams</span><span class="p">[:,</span><span class="n">index_lat_high</span><span class="p">,</span><span class="n">index_lon_high</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next step is the vertical interpolation. The 137 layer CAMS profile is interpolated to the TROPOMI retrieval layers.</p>
+<p>For simplicity we implemented a linear interpolation.
+(For quantitative comparisons a more advanced interpolation approach is adviced, for instance an interpolation which conserves the total column.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Extract CAMS pressure profiles in hPa at the two locations</span>
+<span class="n">pres_fl_low</span> <span class="o">=</span> <span class="n">pres_fl</span><span class="p">[:,</span><span class="n">index_lat_low</span><span class="p">,</span><span class="n">index_lon_low</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span>
+<span class="n">pres_fl_high</span> <span class="o">=</span> <span class="n">pres_fl</span><span class="p">[:,</span><span class="n">index_lat_high</span><span class="p">,</span><span class="n">index_lon_high</span><span class="p">]</span><span class="o">*</span><span class="mf">0.01</span>
+
+<span class="n">o3_cams_low_interp</span>  <span class="o">=</span> <span class="n">cams_to_tropomi_linear</span><span class="p">(</span><span class="n">o3_cams_low</span><span class="p">[:],</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:],</span> <span class="n">pres_fl_low</span><span class="p">[:],</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:])</span>
+<span class="n">o3_cams_high_interp</span> <span class="o">=</span> <span class="n">cams_to_tropomi_linear</span><span class="p">(</span><span class="n">o3_cams_high</span><span class="p">[:],</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:],</span> <span class="n">pres_fl_high</span><span class="p">[:],</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:])</span>
+
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;o3_cams_low:          nr of layers = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">o3_cams_low</span><span class="p">)</span> <span class="p">)</span>
+<span class="nb">print</span> <span class="p">(</span> <span class="s2">&quot;o3_cams_low_interpol: nr of layers = &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">o3_cams_low_interp</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>o3_cams_low:          nr of layers =  137
+o3_cams_low_interpol: nr of layers =  33
+</pre></div>
+</div>
+</div>
+</div>
+<p>Exercise: You can check if the simple interpolation is reasonable by plotting the two CAMS profiles together in a plot.</p>
+<p>The CAMS ozone field is provided as mass mixing ratio (kg/kg).<br>
+The TROPOMI ozone is a density profile (molecules per cm^3).</p>
+<p>With the ideal gas law we can transform the CAMS mixing ratio to ozone densities:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o3dens_cams_low_interp</span> <span class="o">=</span> <span class="n">convert_o3_massmixing_to_molec_cm3</span> <span class="p">(</span> <span class="n">o3_cams_low_interp</span><span class="p">[:],</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:]</span><span class="o">*</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">][:])</span>
+<span class="n">o3dens_cams_high_interp</span> <span class="o">=</span> <span class="n">convert_o3_massmixing_to_molec_cm3</span> <span class="p">(</span> <span class="n">o3_cams_high_interp</span><span class="p">[:],</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:]</span><span class="o">*</span><span class="mf">100.0</span><span class="p">,</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;temperature&#39;</span><span class="p">][:])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The last step is the application of the averaging kernels. <br>
+The observation operator H to compare the CAMS profile <b>x</b> with the retrieved optimal estimation profile is:<br>
+H(<b>x</b>) = <b>x</b><sub>a</sub> + <b>A</b> ( <b>x</b> - <b>x</b><sub>a</sub>) <br>
+where <b>x</b><sub>a</sub> is the TROPOMI a-priori profile (see Rodgers, 2000).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_a_low</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:]</span>
+<span class="n">x_low</span> <span class="o">=</span> <span class="n">o3dens_cams_low_interp</span><span class="p">[:]</span>
+<span class="n">A_low</span> <span class="o">=</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">][:,:]</span>
+
+<span class="n">x_a_hi</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:]</span>
+<span class="n">x_hi</span> <span class="o">=</span> <span class="n">o3dens_cams_high_interp</span><span class="p">[:]</span>
+<span class="n">A_hi</span> <span class="o">=</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ak&#39;</span><span class="p">][:,:]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x_s_low</span> <span class="o">=</span> <span class="n">x_a_low</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A_low</span><span class="p">,</span> <span class="p">(</span><span class="n">x_low</span> <span class="o">-</span> <span class="n">x_a_low</span><span class="p">))</span>
+<span class="n">x_s_hi</span> <span class="o">=</span> <span class="n">x_a_hi</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">A_hi</span><span class="p">,</span> <span class="p">(</span><span class="n">x_hi</span> <span class="o">-</span> <span class="n">x_a_hi</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we can present the comparison in a plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">8</span><span class="p">))</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3dens_cams_low_interp</span><span class="p">[:</span><span class="mi">26</span><span class="p">]</span><span class="o">/</span><span class="mf">1e12</span><span class="p">,</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CAMS&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">x_s_low</span><span class="p">[:</span><span class="mi">26</span><span class="p">]</span><span class="o">/</span><span class="mf">1e12</span><span class="p">,</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CAMS - AKs&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;crimson&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TROPOMI&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_low</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TROPOMI apriori&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3dens_cams_high_interp</span><span class="p">[:</span><span class="mi">26</span><span class="p">]</span><span class="o">/</span><span class="mf">1e12</span><span class="p">,</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CAMS&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">x_s_hi</span><span class="p">[:</span><span class="mi">26</span><span class="p">]</span><span class="o">/</span><span class="mf">1e12</span><span class="p">,</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;CAMS - AKs&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;crimson&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TROPOMI&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;navy&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;o3_ndens_ap&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">]</span><span class="o">*</span><span class="mf">1e-12</span><span class="p">,</span> <span class="n">o3pr_high</span><span class="p">[</span><span class="s1">&#39;pressure&#39;</span><span class="p">][:</span><span class="mi">26</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span> <span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;TROPOMI apriori&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">7.5</span><span class="p">])</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1200</span><span class="p">])</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1200</span><span class="p">])</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">invert_yaxis</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Pressure [hPa]&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number density [10$^1$$^2$ molec cm$^-$$^3$]&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number density [10$^1$$^2$ molec cm$^-$$^3$]&#39;</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Low&#39;</span><span class="p">)</span>
+<span class="n">axs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;High&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;O$_3$ profile&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0.5, 0.98, &#39;O$_3$ profile&#39;)
+</pre></div>
+</div>
+<img alt="_images/7b245093d2c1c7b085715d8ea84bf71ffb834b65058447522e764941dafdd752.png" src="_images/7b245093d2c1c7b085715d8ea84bf71ffb834b65058447522e764941dafdd752.png" />
+</div>
+</div>
+<p>The blue line (TROPOMI profile) should be compared with the CAMS profile with the AK observation operator (red line).<br>
+As reference we also show the a-priori (grey) and the CAMS profile interpolated to the tropomi levels (green).</p>
+<p>Notes:<br></p>
+<ul class="simple">
+<li><p>The CAMS profile (green) shows more structure than the retrieval, with extra minima. The retrieval is smooth, reflecting the limited vertical resolution.<br></p></li>
+<li><p>The observation operator (averaging kernel) smooths the CAMS profile to reflect the information content in the retrieval.<br></p></li>
+<li><p>At the UT/LS region (100-300 hPa) the low concentrations in the low case, and high concentrations in the high column case are well captured in both CAMS and TROPOMI.<br></p></li>
+<li><p>The comparison in the high ozone case between 30 hPa and the surface is good, and differs substantially from the a-priori.<br></p></li>
+<li><p>The comparison in the low ozone case shows larger differences, with TROPOMI lower around 40 hPa, and higher in the free troposphere. The result seem to suggest the retrieval finds it hard to constrain free troposphere and lower stratosphere separately, even though the total column is not too different.<br></p></li>
+<li><p>For the higher levels (where ozone is not constrained by the observation) the averaging kernels show strong oscillations leading to worse comparisons above the 20 hPa level. More work is needed to understand and improve the comparisons for these higher levels.</p></li>
+</ul>
+<p>The other key element of the retrieval product is the covariance matrix. This contains the information on the errors for each level, and the error correlations between different pressure levels. In data assimilation the retrieval error covariances needs to be accounted for explicitly, in order to extract the real information from the profiles and to avoid the noise part of the retrieval to influence the analysis.</p>
+<p>For more quantitative comparisons it is important to use a bit more advanced interpolation methods then was used in this tutorial, especially for the mapping of the CAMS layers on the retrieval layers.</p>
+<p>Exercise: Just like the AK, visualise a selection of the rows of the covariance matrix.</p>
+<p>Final note: Instead of providing the full AK and covariance, there is a more efficient way to pass only the real information (leading eigenvectors from the retrieval with signal to noise ratios above 1) to a data assimilation system. This is not a full profile on 33 levels, but a shorted array with a length close to the DFS (6 retrieved quantities). The AK then becomes a matrix of 6x33, describing how these numbers are related to the real ozone profile. This approach is explained in Migliorini et al., <a class="reference external" href="https://doi.org/10.1175/2007MWR2236.1">https://doi.org/10.1175/2007MWR2236.1</a></p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="1-satellite-model-comparison-theory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Comparing satellite data with models</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="3-no2-tropomi-cams-regional.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Comparing TROPOMI NO2 columns with the CAMS regional air quality ensemble product</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Atmosphere Monitoring Service (CAMS), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

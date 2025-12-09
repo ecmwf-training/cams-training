@@ -1,0 +1,688 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Comparing satellite data with models &#8212; CAMS Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1-satellite-model-comparison-theory';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="TROPOMI Ozone Profile retrievals" href="2-ozone-profile-tropomi-analysis.html" />
+    <link rel="prev" title="Antarctic Ozone Hole Monitoring Tutorial" href="proc-ozone.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/CAMS–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/CAMS–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Atmosphere Monitoring Service (CAMS) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ads.atmosphere.copernicus.eu/user-guide">ADS User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="da-read-write.html">Import, Reduce, Export</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualisation Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vis-maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-time-series.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-profiles.html">Profile Plots and Zonal Means</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Product Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cams-global-forecast-aeronet.html">CAMS global forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-regional-forecast.html">CAMS regional forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-global-reanalysis.html">CAMS global reanalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-emissions.html">Emissions inventories</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-mos.html">CAMS Model Output Statistics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="proc-aq-index.html">European Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-glob-eaqi.html">Global Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-ozone.html">Antarctic Ozone Hole Monitoring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Averaging kernels tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Satellite and model comparison theory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2-ozone-profile-tropomi-analysis.html">ozone satellite and model comparison</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3-no2-tropomi-cams-regional.html">NO2 satellite and model comparison</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/">Tutorials from the Copernicus Climate Change Service (C3S)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-training/cams-training/main?urlpath=tree/1-satellite-model-comparison-theory.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training/issues/new?title=Issue%20on%20page%20%2F1-satellite-model-comparison-theory.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/1-satellite-model-comparison-theory.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparing satellite data with models</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="comparing-satellite-data-with-models">
+<h1>Comparing satellite data with models<a class="headerlink" href="#comparing-satellite-data-with-models" title="Permalink to this heading">#</a></h1>
+<p>Henk Eskes (<a class="reference external" href="mailto:henk&#46;eskes&#37;&#52;&#48;knmi&#46;nl">henk<span>&#46;</span>eskes<span>&#64;</span>knmi<span>&#46;</span>nl</a>) <br>
+September 2024, update September 2025</p>
+<h2>Comparing models and observations</h2>
+<p>In this practical we will investigate how a model (for instance a regional air-quality forecasting model) can be compared with satellite observations (retrievals) of atmospheric composition. Atmospheric composition information is provided by several satellite instruments, and can be derived from the UV, visible, near-infrared, short-wave infrared, infrared or microwave parts of the spectrum. Radiance measurements from these instruments are converted into retrieval “Level-2” products. These are either reported as profiles (e.g. an ozone profile from the nadir-looking TROPOMI, or from the microwave limb sounder MLS), or, in many case, as a column amount (e.g. for CO, CH4, CO2, NO2, SO2, HCHO, NH3 and several other species), or as optical property (e.g. AOD - Aerosol optical depth).</p>
+<p>Here we will focus on trace gas observations, columns and profiles.</p>
+<h3>Models minus observation departures</h3>
+<p>The difference between a measurement and the model-simulation of the measurement is a key quantity in data assimilation and validation, and is often called the <b>departure</b>:</p>
+<div> <img src="./img/dept.png" width="400"> </div>
+<p>Note: This has the unit of the observations, e.g. ppb, µg/m<sup>3</sup>, mol/m<sup>2</sup>.</p>
+<p>Relative differences do not have a unit and are often easier to understand and interpret for non-specialist .<br>
+These can be expressed as percentage difference (%).</p>
+<div> <img src="./img/rel_diff.png" width="550"> </div>
+<p>A more symmetric form is also possible (useful when some observations become close to, or equal to 0):</p>
+<div> <img src="./img/rel_diff_sym.png" width="450"> </div>
+<p>In the CAMS validation reports most results are expressed in relative units, <br>
+such as the normalised bias, fractional gross error (a normalised absolute mean difference) or the correlation.</p>
+<p>Model output is in most cases four dimensional (4D), e.g. 3D fields produced every hour, written as a 4D matrix</p>
+<div> <img src="./img/x4d.png" width="50"> </div>
+<p>while the observation <i>y</i> is taken at a given point in space and time. <br>
+Therefore we need an “observation operator” <i>H</i>,
+to computing the model equivalent of the observation at the location and time of the observation.<br>
+The departure becomes:</p>
+<div> <img src="./img/Hx_y.png" width="120"> </div>
+<p>In it’s simplest form <i>H</i> is an interpolation in time, followed by a three-dimensional interpolation in space</p>
+<div> <img src="./img/H_spacetime.png" width="320"> </div>
+<p>For atmospheric composition <b>remote sensing</b> (with satellites or with ground instruments) the retrieval product  is often a <b>profile</b> provided on a vertical retrieval grid</b>.  <br>
+For instance, the Sentinel-5P satellite mission (TROPOMI instrument) has an ozone profile product, specified on a number of vertical levels.</p>
+<p>The 3D interpolation operator can then be written as a successive horizontal lat-lon interpolation followed by a  vertical interpolation from the model levels to the retrieval grid:</p>
+<div> <img src="./img/H_4d.png" width="600"> </div>
+<h3>Comparing models and remote-sensing retrievals</h3>
+<p>It seems natural to use the above form of the observation operator (based on space-time interpolations) in comparisons against satellite profiles,  but <b>this is not the optimal way</b> to compare model output with remote sensing observations.</p>
+<p>Why not?</p>
+<ol class="arabic simple">
+<li><p>Remote sensing observations can not retrieve concentrations at one point (vertical level),  but rather provide height-integrated averages of concentrations weighted by  sensitivity profiles. Comparing with model ozone point values is like comparing ozone apples with ozone pears.</p></li>
+<li><p>The number of independent pieces of information in the measurements is often much less  that the number of retrieval layers. In this case the retrieval profile shapes are constrained  or “smoothed” by  a-priori profile information (e.g. fixed profile shape or climatology),  and the comparisons will partly reflect the a-priori input.</p></li>
+</ol>
+<h3> Optimal Estimation Theory </h3>
+<p>The bible of remote sensing retrieval theory is the book
+<b>”Inverse methods for atmospheric sounding”
+by Clive Rodgers </b>
+World Scientific, 2000.</p>
+<p>The concepts which are introduced briefly below are derived and discussed in detail in this book.
+It is a must read for people working on (satellite) retrievals.</p>
+<div> <img src="./img/Rodgers_book.png" width="200"> </div>
+<h3>Comparing models and remote-sensing retrievals (continued)</h3>
+<p>Instead of comparing with retrievals (trace gas columns or profiles) we can use the model and observation operator to <b>simulate radiances</b> or reflectances (as function of wavelength) and compare directly with the satellite observations of radiation:</p>
+<div> <img src="./img/Fx_r.png" width="320"> </div>
+<p>Where <i>F</i> is a forward radiative transfer operator which computes wavelength-dependent  radiances given a model trace gas or aerosol vertical profile (and other quantities  that determine the radiances).</p>
+<p>As shortcut we wrote the profile at the satellite location as:</p>
+<div> <img src="./img/HIx4d_is_x.png" width="120"> </div><p>Notes:</p>
+<ul class="simple">
+<li><p>A  major advantage of the radiance comparison approach: There is <b>no additional a-priori profile shape dependence</b> in this comparison, only the profile of the model is needed. Retrieval methods generally depend on a pre-defined a-priori profile shape (for instance a climatology). In contrast, a forward radiative transfer model does not.</p></li>
+<li><p>In numerical weather prediction (e.g. at ECMWF) the assimilation of satellite radiances is common (default) practice, for instance to assimilate satellite temperature profile information.</p></li>
+<li><p>In contrast, for the global  daily forecasts of trace gases and aerosol, CAMS is mainly assimilating retrieval products such as ozone stratospheric profiles and total columns, CO, NO2 columns, retrieved aerosol optical depth (AOD). (Some experiments are conducted in CAMS to assimilate radiances, for instance to constrain aerosol properties.)</p></li>
+<li><p>For validation and interpretation the radiance assimilation is not always practical: differences in radiances are not so easily related  to errors in trace gas concentrations.  Also: a complex forward model to compute the radiances has to be  implemented in the comparison.</p></li>
+</ul>
+<p>We have now discussed two options:</p>
+<ol class="arabic simple">
+<li><p>Compare retrieved profiles with a model using a 4D interpolation observation operator.</p></li>
+<li><p>Comparing measured satellite radiances with radiances simulated with the model and a radiative transfer model.</p></li>
+</ol>
+<p>But there is a third option:</p>
+<p>Instead of comparing with retrievals products we can also reproduce the retrieval.  This means:</p>
+<ul class="simple">
+<li><p>first simulate radiances (as function of wavelength) and then <br></p></li>
+<li><p>apply the retrieval operator with the a-priori profile and other parameters used for the retrieval.</p></li>
+</ul>
+<p>This may sounds very complicated, but it is not, and can be implemented using information provided in the L2 satellite data products, as explained below.</p>
+<p>The model-observation difference now becomes:</p>
+<div> <img src="./img/RF_Rr.png" width="300"> </div>
+<p>Where <i>F</i> is a forward radiative transfer operator computing radiances based on the model profile and input parameters. <br>
+<i>R</i> is the retrieval method which depends on:</p>
+<ul class="simple">
+<li><p>The radiances or reflectances <i>r</i></p></li>
+<li><p>The a-priori profile <b>x</b><sub><i>a</i></sub>. In this tutorial these are trace gas profiles, for instance ozone or NO<sub>2</sub>.</p></li>
+<li><p>Other retrieval input parameters <b>b</b>. <br>   Examples of “b” are surface albedo, cloud properties, water vapour, temperature profile</p></li>
+</ul>
+<p>Forward and retrieval operators are typically non-linear, but can be linearised around the a-priori, 
+see e.g. the book of Rodgers (2000):</p>
+<div> <img src="./img/FR_lin.png" width="350"> </div>
+<p>Where <b>F</b> is a matrix converting from real space to wavelength space, 
+and <b>R</b> is the linearised retrieval matrix connecting wavelength space to real space.</p>
+<p>The model-simulated retrieval</p>
+<div> <img src="./img/RF.png" width="500"> </div>
+<p>The product of the linearised retrieval method times forward model</p>
+<div> <img src="./img/A_RF.png" width="80"> </div> 
+<p>is the <b>Averaging Kernel</b> of the retrieval (see Rodgers, 2000).</p>
+<p>Excercise: derive this relation using the formulas above.</p>
+<p>The departure now becomes:</p>
+<div> <img src="./img/d_Rodgers.png" width=200"> </div>
+<p>where <b>y</b>
+is the retrieved quantity (for instance an ozone profile, a vector quantity).</p>
+<p>The averaging kernel and a-priori profile are normally <b>included in the retrieval dataproduct</b>. <br>
+Therefore this method 3 comparison can be  done without additional radiative transfer calculations.</p>
+<p>Note:</p>
+<p>In the discussion so far the averaging kernel is normally a square matrix, N x N, where N is the number of vertical layers used for the computations.<br>
+However, this is not needed: the forward model may use a <b>different set</b> of vertical layers  than the retrieval method.</p>
+<p>For an accurate forward modelling of the radiation a sufficient number of layers is needed. Typically 20-40 layers are used.</p>
+<p>But the number of independent pieces of information derived from the satellite data is often (much) smaller than the number of layers. For instance, the ozone profile retrieval for TROPOMI has about 6 pieces of information on ozone. Therefore the results could be provided for a limited number of layers or subcolumns.</p>
+<p>The extreme example is the retrieval of total columns (like for TROPOMI NO2), where the retrieval produces  just one number instead of a profile. <br>
+The averaging kernel then becomes a <b>vector</b> .</p>
+<p>Typically remote sensing retrievals are very sensitive to the a-priori profile shape  provided to the retrieval. However, the averaging kernel depends in the same way  on the a-priori, because it contains the retrieval method. While absolute comparisons  still depend on the a-priori, the relative comparison</p>
+<div> <img src="./img/rel_diff.png" width="550"> </div>
+<p>becomes a-priori independent when the averaging kernel is used in the comparison. Note that this holds for weak absorbers with a linear relation between the absorber and the radiance (such as for NO2 to a good approximation). For strong absorbers the forward model becomes non-linear and has to be linearised around an a-priori starting point. This introduces a (often weak) dependence of the comparison on the linearisation point.</p>
+<p>There is also a high-level equivalence between comparisons in radiance space and  in profile space. When an optimised profile            reproduces the radiances, eq. (2),  then the same profile will give a perfect match with the retrieval,  independent of the a-priori chosen in the retrieval method.</p>
+<p>But:</p>
+<ul class="simple">
+<li><p>The forward and retrieval operators should be reasonably linear around the a-priori.</p></li>
+<li><p>The retrieval method should not be too simple and should not loose information.</p></li>
+</ul>
+<p>Reference: Stefano Migliorini, “On the Equivalence between Radiance and Retrieval Assimilation”, MWR 2012.</p>
+<h3>Satellite retrievals of columns</h3>
+<p>Several column products, like TROPOMI SO2, HCHO and NO2 total columns, are derived using the <b>Differential Optical Absorption Spectroscopy</b> method. This two-step approach first compares differential spectral features in the measurement with reference absorption spectra, to derive the amount of absorption along the light path. Secondly, a so-called air-mass factor is derived using radiative transfer calculations to compute the vertical column.</p>
+<p>The DOAS column retrieval approach has been re-formulated using Rodgers Optimal Estimation formalism (Eskes and Boersma, 2003).
+This leads naturally to the definition of averaging kernel vectors for total column DOAS retrieved quantities.</p>
+<div> <img src="./img/Eskes2003.png" width="600"> </div>
+<p>NO2 retrieval example: The DOAS averaging kernel profiles are a measure of the sensitivity of the measurement to
+NO2 at a given altitude. NO2 is retrieved in the 400-500 nm spectral range, where Raileigh scattering Each retrieval has its own kernel, depending on retrieval parameters like the surface reflectivity, cloud cover, geometry (solar zenith and satellite viewing angles). The image below shows three examples:</p>
+<ul class="simple">
+<li><p>When the surface is dark the sensitivity close to the surface (and kernel value) is small.</p></li>
+<li><p>When the surface is bright (e.g. sand, snow) the sensitivity close to the surface is large.</p></li>
+<li><p>Clouds obscure the NO2 close to the surface. The satellite has almost no sensitivity below the cloud, but is more sensitive just above the cloud.</p></li>
+</ul>
+<div> <img src="./img/no2_kernel_examples.png" width="400"> </div>
+<p>For the weak absorber total column retrieval (e.g. TROPOMI NO2) the formula to compare model with the retrieval simplifies further. For this retrieval</p>
+<div> <img src="./img/xa_axa.png" width="150"> </div>
+<p>and therefore the (model-observation) departure becomes</p>
+<div> <img src="./img/Ax_y.png" width="80"> </div>
+or 
+<div> <img src="./img/AHx_y.png" width="140"></div> 
+<p>The retrieved column (a single number) is compared with the dot product of the kernel vector and the vector of modelled partial columns for all the vertical layers.</p>
+<p>Note that the a-priori profile is not needed to compare the retrieval with the model. <br>
+This is the reason why the a-priori is not provided in the NO2 data product.</p>
+<h3>Error sources in the model-satellite comparison</h3>
+<p>The spread in (model-obs) values is determined by three error terms: <br></p>
+<ul class="simple">
+<li><p>Model (forecast) errors  <br></p></li>
+<li><p>Combined observation + retrieval errors <br></p></li>
+<li><p>Representativity errors</p></li>
+</ul>
+<div> <img src="./img/error_terms.png" width="500"> </div>
+<p>In this formula we assume that the three error terms are uncorrelated.</p>
+<p>The satellite retrieval provides an error covariance matrix quantifying the retrieval errors. This is a matrix: because of the limited vertical resolution the errors in the retrieved values will be correlated between layers at different altitudes. If the retrieved ozone has a positive error at a certain altitude, say 20 km, then it is likely that the error at 21 km is also positive. This is described by the off-diagonal terms in the retrieval covariance matrix. Layers further apart may be anti-correlated: a positive error at 20 km may on average be related to a negative error at 40 km altitude.</p>
+<p>Representativity errors are often neglected but are also often the largest term, especially for strongly varying short-lived species!<br>
+Examples:<br></p>
+<ul class="simple">
+<li><p>Comparing a roadside NO2 / PM monitor with the 10x10 km gridcell of a European air quality model <br></p></li>
+<li><p>Difference in satellite footprint and model gridcell (different air masses) <br></p></li>
+<li><p>Measurements in mountainous terrain</p></li>
+</ul>
+<p>If kernels are not used in the comparison, then a so-called “smoothing error” (Rodgers, 2000) has to be added to the error budget to reflect the finite (vertical) resolution of the retrieval.</p>
+<h3>Take-home messages</h3>
+<ul class="simple">
+<li><p>Retrievals (profiles, columns) are often strongly dependent on the a-priori used in the retrieval method.</p></li>
+<li><p>Remote sensing retrievals can be compared with models in two ways: (1) by using only the 4D interpolation form of the observartion operator, or (2) by applying the averaging kernels after the 4D interpolation.</p></li>
+<li><p>Method (2) is highly recommended. By using the averaging kernels the relative comparison between model and retrieval becomes independent (or only weakly dependent in the non-linear case) on the a-priori assumptions made in the retrieval. In general (model-measurement) differences will be smaller with method 1 because the smoothing error is avoided.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="proc-ozone.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Antarctic Ozone Hole Monitoring Tutorial</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="2-ozone-profile-tropomi-analysis.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TROPOMI Ozone Profile retrievals</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Atmosphere Monitoring Service (CAMS), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
