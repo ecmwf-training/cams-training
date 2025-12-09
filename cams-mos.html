@@ -1,0 +1,1534 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>CAMS-MOS &#8212; CAMS Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'cams-mos';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="European Air Quality Index Calculation" href="proc-aq-index.html" />
+    <link rel="prev" title="Emissions" href="cams-emissions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/CAMS–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/CAMS–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Atmosphere Monitoring Service (CAMS) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Access Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ads.atmosphere.copernicus.eu/user-guide">ADS User Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="da-read-write.html">Import, Reduce, Export</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Visualisation Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="vis-maps.html">Maps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-animations.html">Animations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-time-series.html">Time Series</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vis-profiles.html">Profile Plots and Zonal Means</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Product Tutorials</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cams-global-forecast-aeronet.html">CAMS global forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-regional-forecast.html">CAMS regional forecasts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-global-reanalysis.html">CAMS global reanalysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cams-emissions.html">Emissions inventories</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CAMS Model Output Statistics</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Processing Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="proc-aq-index.html">European Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-glob-eaqi.html">Global Air Quality Index Calculation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="proc-ozone.html">Antarctic Ozone Hole Monitoring</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Processing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/">Tutorials from the Copernicus Climate Change Service (C3S)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-training/cams-training/main?urlpath=tree/cams-mos.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-training/cams-training/issues/new?title=Issue%20on%20page%20%2Fcams-mos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/cams-mos.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CAMS-MOS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-your-ads-api-credentials">Add your ADS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access-and-preprocessing">Data access and preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-and-download-data">Explore and download data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stations-list">The stations list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-files">The data files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-bias">Average bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-daily-o-3-max-concentration">Number of daily <span class="math notranslate nohighlight">\(O_3\)</span> max concentration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><a class="reference external" href="https://atmosphere.copernicus.eu/6th-ecmwf-cams-esa-eumetsat-training-atmospheric-composition"><img alt="logo" src="https://raw.githubusercontent.com/ecmwf-training/2024-cams-act6-training/main/images/logoline.png" /></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="cams-mos">
+<h1>CAMS-MOS<a class="headerlink" href="#cams-mos" title="Permalink to this heading">#</a></h1>
+<p><strong>Run the tutorial via free cloud platforms</strong>: <a class="reference external" href="https://mybinder.org/v2/gh/ecmwf-training/2024-cams-act6-training/main?labpath=05-cams-mos/cams-mos.ipynb"><img alt="binder" src="https://mybinder.org/badge.svg" /></a>
+<a class="reference external" href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-training/2024-cams-act6-training/blob/main/05-cams-mos/cams-mos.ipynb"><img alt="kaggle" src="https://kaggle.com/static/images/open-in-kaggle.svg" /></a>
+<a class="reference external" href="https://colab.research.google.com/github/ecmwf-training/2024-cams-act6-training/blob/main/05-cams-mos/cams-mos.ipynb"><img alt="colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a></p>
+<section id="learning-objectives">
+<h2>Learning objectives<a class="headerlink" href="#learning-objectives" title="Permalink to this heading">#</a></h2>
+<p>In this notebook we download and plot air-quality point forecasts from the CAMS Atmosphere Data Store. We use the <a class="reference external" href="https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-forecasts-optimised-at-observation-sites?tab=overview">CAMS European air quality forecasts optimised at observation sites</a> dataset. We select one european country, from which we get the raw data and the MOS-optimised data, in CSV format, for four pollutants, <span class="math notranslate nohighlight">\(NO_2\)</span>, <span class="math notranslate nohighlight">\(O_3\)</span>, <span class="math notranslate nohighlight">\(PM10\)</span>, and <span class="math notranslate nohighlight">\(PM2.5\)</span>, from all the stations located there. For “raw” data we mean the forecasts from the gridded CAMS ensemble model interpolated over each station. A detailed description is available at the ECMWF documentation website: <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CAMS+Regional%3A+European+Air+Quality+Forecast+Optimised+at+Observation+Sites+data+documentation">CAMS Regional: European Air Quality Forecast Optimised at Observation Sites data documentation</a>. Examples of air quality data used for policy support and decision making are available at the <a class="reference external" href="https://policy.atmosphere.copernicus.eu/">Policy Support</a> of the CAMS web site.</p>
+</section>
+<section id="initial-setup">
+<h2>Initial setup<a class="headerlink" href="#initial-setup" title="Permalink to this heading">#</a></h2>
+<p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the Climate Data Store (CDS), intalling any other packages not already installed, setting up our CDS API credentials and importing the various Python libraries that we will need.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure that the cdsapi package is installed</span>
+<span class="o">!</span>pip install -q cdsapi
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If you are running this notebook in Colab, uncomment the line below and run this cell.</span>
+<span class="c1">#!pip install cartopy</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="add-your-ads-api-credentials">
+<h3>Add your ADS API credentials<a class="headerlink" href="#add-your-ads-api-credentials" title="Permalink to this heading">#</a></h3>
+<p>To set up your ADS API credentials, please login/register on the <a class="reference external" href="https://ads.atmosphere.copernicus.eu/">ADS</a>, then you will see your <a class="reference external" href="https://ads.atmosphere.copernicus.eu/how-to-api">unique API key here</a>.</p>
+<p>You can add this API key to your current session by replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> in the code cell below with your API key.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CDSAPI_URL&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;https://ads.atmosphere.copernicus.eu/api&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s1">&#39;CDSAPI_KEY&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;###########################################&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">yaml</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">datetime</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">ceil</span><span class="p">,</span> <span class="n">sqrt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib.dates</span> <span class="k">as</span> <span class="nn">mdates</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-access-and-preprocessing">
+<h2>Data access and preprocessing<a class="headerlink" href="#data-access-and-preprocessing" title="Permalink to this heading">#</a></h2>
+<p>We want the raw data for four pollutants from the CAMS ensemble model and the MOS-optimised data for all the stations in the european selected country. The data is provided as CVS files. With the data an additional file with a list of the stations is also provided. All the files are zipped for download. The forecasts (lead time hours) are available for 24, 48, 72, and 96 hours starting from each of the the days that have been requested. The days of the forecasts can be in the past till the current day. So if we want the forecast from today for the next 24 hours, in the request we set the current year, month and day, e.g. 2024, 08, 28, and 0-23 for the lead time hours. The days beyond the current one will return no data. The forecasts are available for the current year and the months up to the current one.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explore-and-download-data">
+<h2>Explore and download data<a class="headerlink" href="#explore-and-download-data" title="Permalink to this heading">#</a></h2>
+<p>Visit the download form for the <a class="reference external" href="https://ads.atmosphere.copernicus.eu/datasets/cams-europe-air-quality-forecasts-optimised-at-observation-sites?tab=download">CAMS global forecast data</a>. View the parameters in the API script in the following cell and select the corresponding options.</p>
+<p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which should be identical to the code cell below.</p>
+<p><strong>Please remember to accept the terms and conditions at the bottom of the download form.</strong></p>
+<section id="download-data">
+<h3>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h3>
+<p>With the API request copied into the cell below, running this cell will retrieve and download the data you requested into your local directory.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">variables</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;nitrogen_dioxide&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39;ozone&#39;</span><span class="p">,</span> 
+             <span class="s1">&#39;particulate_matter_10um&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;particulate_matter_2.5um&#39;</span><span class="p">]</span>
+<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;netherlands&#39;</span><span class="p">]</span>
+<span class="n">year</span> <span class="o">=</span> <span class="s1">&#39;2024&#39;</span>
+<span class="n">months</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;09&#39;</span><span class="p">]</span>
+<span class="n">days</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;13&#39;</span><span class="p">,</span> <span class="s1">&#39;14&#39;</span><span class="p">]</span>
+<span class="n">leadtime_periods</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;0-23&#39;</span><span class="p">,</span> <span class="s1">&#39;24-47&#39;</span><span class="p">]</span> 
+<span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;mos_optimised&#39;</span><span class="p">,</span> <span class="s1">&#39;raw&#39;</span><span class="p">]</span>
+<span class="n">cams_dataset</span> <span class="o">=</span> <span class="s1">&#39;cams-europe-air-quality-forecasts-optimised-at-observation-sites&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can perform some validation tests on the settings, e.g. the last forecast starting day cannot be in the future</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">validate_request_data</span><span class="p">(</span><span class="n">years</span><span class="p">,</span> <span class="n">months</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">leadtime_periods</span><span class="p">):</span>
+    <span class="n">validation_result</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">current_date</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">())</span>
+    <span class="n">current_year</span> <span class="o">=</span> <span class="n">current_date</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> 
+    <span class="n">current_month</span> <span class="o">=</span> <span class="n">current_date</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">7</span><span class="p">]</span>
+    <span class="n">current_day</span> <span class="o">=</span> <span class="n">current_date</span><span class="p">[</span><span class="mi">8</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span>
+    <span class="n">days</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+    
+    <span class="c1"># test forecast days</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">days</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;</span> <span class="nb">int</span><span class="p">(</span><span class="n">current_day</span><span class="p">)):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The last forecast day must be the current one, </span><span class="si">{:s}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">, or a previous one.&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">current_day</span><span class="p">,</span> <span class="n">current_month</span><span class="p">))</span>
+        <span class="n">validation_result</span> <span class="o">=</span> <span class="kc">False</span>
+    <span class="c1"># test leadtime periods</span>
+    <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">leadtime_periods</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The maximum lead time forecast is 4 days&#39;</span><span class="p">)</span>
+        <span class="n">validation_result</span> <span class="o">=</span> <span class="kc">False</span>
+        
+    <span class="k">return</span> <span class="n">validation_result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The request is valid: </span><span class="si">{:b}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">validate_request_data</span><span class="p">(</span><span class="n">year</span><span class="p">,</span> <span class="n">months</span><span class="p">,</span> <span class="n">days</span><span class="p">,</span> <span class="n">leadtime_periods</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The request is valid: 1
+</pre></div>
+</div>
+</div>
+</div>
+<p>We fill the request form with our selections</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;country&#39;</span><span class="p">:</span> <span class="n">countries</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="n">variables</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">types</span><span class="p">,</span>
+        <span class="s1">&#39;leadtime_hour&#39;</span><span class="p">:</span> <span class="n">leadtime_periods</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">year</span><span class="p">,</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="n">months</span><span class="p">,</span>
+        <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="n">days</span><span class="p">,</span>
+        <span class="s1">&#39;include_station_metadata&#39;</span><span class="p">:</span> <span class="s1">&#39;yes&#39;</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally we send the request to the web service</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">cams_dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="s1">&#39;download.zip&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-09-14 19:58:22,532 INFO Request ID is 1cf06548-bfda-435a-aa84-50dcccfc5e24
+2024-09-14 19:58:22,588 INFO status has been updated to accepted
+2024-09-14 19:58:24,142 INFO status has been updated to running
+2024-09-14 19:58:26,471 INFO status has been updated to successful
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;download.zip&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipObj</span><span class="p">:</span>
+   <span class="n">zipObj</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download/&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="inspect-data">
+<h2>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this heading">#</a></h2>
+<section id="the-stations-list">
+<h3>The stations list<a class="headerlink" href="#the-stations-list" title="Permalink to this heading">#</a></h3>
+<p>For each station in the list the following data is provided:</p>
+<ul class="simple">
+<li><p>The European Environment Information and Observation Network (EIONET) identifier</p></li>
+<li><p>The station’s latitude, longitude, and height</p></li>
+<li><p>The date of start and end of the operational activity of the station</p></li>
+</ul>
+<p>The first two characters of the identifier is the station’s country code, e.g. NL for Nederland</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">zip_file_list</span> <span class="o">=</span> <span class="n">ZipFile</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download.zip&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+<span class="n">zip_file_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">zip_file_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of zipped files: </span><span class="si">{:d}</span><span class="s1"> &#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">zip_file_list</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of zipped files: 33 
+</pre></div>
+</div>
+</div>
+</div>
+<p>We write the names of the raw and MOS-optimised data files into a list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">zip_file_list</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">item</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;station_list&#39;</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of raw and MOS files: </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">file_list</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of raw and MOS files: 32
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="the-data-files">
+<h3>The data files<a class="headerlink" href="#the-data-files" title="Permalink to this heading">#</a></h3>
+<p>A raw data file has the following fields</p>
+<ul class="simple">
+<li><p><em>station_id</em></p></li>
+<li><p><em>datetime</em></p></li>
+<li><p><em>lead_time_hour</em></p></li>
+<li><p><em>species</em></p></li>
+<li><p><em>conc_raw_micrograms_per_m3</em></p></li>
+</ul>
+<p>A MOS-optimised file has the same fields but the last one is named <em>conc_mos_micrograms_per_m3</em>. Each file contains the hourly concentrations of a species for one day and one lead time period from all the stations of the country specified in the request to the web service that provides data about that species. The name of the files have the following structure:</p>
+<p>&lt;type&gt;&lt;lead time interval&gt;&lt;species&gt;&lt;day&gt;&lt;country code&gt;</p>
+<p>We define a function to read the raw and MOS files and check that the station IDs are included in the stations list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_metadata</span><span class="p">(</span><span class="n">zip_file_list</span><span class="p">,</span> <span class="n">stations</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Reads the files included in the downloaded zip file</span>
+<span class="sd">    and returns the station metadata and</span>
+<span class="sd">    concentration data as Pandas DataFrames</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+  
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">zip_file_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">name</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;station_list&#39;</span><span class="p">):</span>
+            <span class="c1"># Read the station metadata file</span>
+            <span class="n">date_fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span>
+            <span class="n">file_path</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+            <span class="n">station_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">keep_default_na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+            <span class="c1"># Remove metadata for stations we&#39;re not interested in</span>
+            <span class="k">if</span> <span class="n">stations</span><span class="p">:</span>
+                <span class="n">station_data</span> <span class="o">=</span> <span class="n">station_data</span><span class="p">[</span>
+                            <span class="n">station_data</span><span class="o">.</span><span class="n">id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">stations</span><span class="p">)]</span>
+                <span class="c1"># Set missing end dates to a date far in the future</span>
+                <span class="n">no_end</span> <span class="o">=</span> <span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">date_end</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+                <span class="n">station_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">no_end</span><span class="p">,</span> <span class="s1">&#39;date_end&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;2099-01-01&#39;</span>
+  
+                <span class="c1"># Parse start and end dates into datetime objects</span>
+                <span class="n">station_data</span><span class="o">.</span><span class="n">date_start</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">date_start</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">date_fmt</span><span class="p">)</span>
+                <span class="n">station_data</span><span class="o">.</span><span class="n">date_end</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">date_end</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="n">date_fmt</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">station_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_data</span> <span class="o">=</span> <span class="n">read_metadata</span><span class="p">(</span><span class="n">zip_file_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total number of stations: </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">station_data</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of stations: 2271
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can count the number of stations in the country that was specified in the request, in this case Nederlands.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">country_code</span> <span class="o">=</span> <span class="s1">&#39;NL&#39;</span>
+<span class="n">country_stations</span> <span class="o">=</span> <span class="n">station_data</span><span class="p">[</span><span class="n">station_data</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">country_code</span><span class="p">)]</span>
+<span class="n">num_country_stations</span> <span class="o">=</span> <span class="n">country_stations</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of stations in </span><span class="si">{0:s}</span><span class="s1">: </span><span class="si">{1:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">country_code</span><span class="p">,</span> <span class="n">num_country_stations</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of stations in NL: 46
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can select one or more stations in that country</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#selected_stations = None</span>
+<span class="c1">#selected_stations = [&#39;NL00014&#39;, &#39;NL00003&#39;]</span>
+<span class="n">selected_stations</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;NL00014&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_data</span> <span class="o">=</span> <span class="n">read_metadata</span><span class="p">(</span><span class="n">zip_file_list</span><span class="p">,</span> <span class="n">selected_stations</span><span class="p">)</span>
+<span class="n">station_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>position_number</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>alt</th>
+      <th>date_start</th>
+      <th>date_end</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1874</th>
+      <td>NL00014</td>
+      <td>1</td>
+      <td>4.8662</td>
+      <td>52.35971</td>
+      <td>2.0</td>
+      <td>2024-01-17</td>
+      <td>2099-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>In the next step we collect the raw and MOS concentrations and then we merge the values in a single dataframe</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">read_data</span><span class="p">(</span><span class="n">station_list</span><span class="p">,</span> <span class="n">stations</span><span class="p">):</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">station_list</span><span class="p">:</span>
+        <span class="c1"># Read the station metadata file</span>
+        <span class="n">date_fmt</span> <span class="o">=</span> <span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span>
+        <span class="c1"># Read the data file</span>
+        <span class="n">file_path</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download/&#39;</span> <span class="o">+</span> <span class="n">name</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">infer_datetime_format</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+        <span class="c1"># Remove data for stations we&#39;re not interested in</span>
+        <span class="k">if</span> <span class="n">stations</span><span class="p">:</span>
+            <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">station_id</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">stations</span><span class="p">)]</span>
+            <span class="c1"># Get the name of the column containing concentration so we</span>
+            <span class="c1"># can group data by raw/mos type</span>
+            <span class="n">data_col</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">columns</span> <span class="k">if</span> <span class="n">c</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;conc_&#39;</span><span class="p">)]</span>
+            <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data_col</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+            <span class="n">data_col</span> <span class="o">=</span> <span class="n">data_col</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">data_col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+                <span class="n">data</span><span class="p">[</span><span class="n">data_col</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">data</span><span class="p">[</span><span class="n">data_col</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">read_data</span><span class="p">(</span><span class="n">file_list</span><span class="p">,</span> <span class="n">selected_stations</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;conc_mos_micrograms_per_m3&#39;, &#39;conc_raw_micrograms_per_m3&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">merge_data</span><span class="p">(</span><span class="n">data_dict</span><span class="p">):</span>
+    <span class="n">merged_data</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">data_col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">data_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+        <span class="c1"># Concatenate all times/countries/species</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">data_col</span><span class="p">])</span>
+        <span class="c1"># Merge raw and mos into combined records</span>
+        <span class="k">if</span> <span class="n">merged_data</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">merged_data</span> <span class="o">=</span> <span class="n">x</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">merged_data</span> <span class="o">=</span> <span class="n">merged_data</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;outer&#39;</span><span class="p">,</span> <span class="n">validate</span><span class="o">=</span><span class="s1">&#39;1:1&#39;</span><span class="p">,</span>
+                                            <span class="n">on</span><span class="o">=</span><span class="p">[</span><span class="n">c</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span>
+                                                <span class="k">if</span> <span class="n">c</span> <span class="o">!=</span> <span class="n">data_col</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">merged_data</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged_data</span> <span class="o">=</span> <span class="n">merge_data</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">merged_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>station_id</th>
+      <th>datetime</th>
+      <th>lead_time_hour</th>
+      <th>species</th>
+      <th>conc_mos_micrograms_per_m3</th>
+      <th>conc_raw_micrograms_per_m3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>NL00014</td>
+      <td>2024-09-13 00:00:00</td>
+      <td>0</td>
+      <td>NO2</td>
+      <td>21.0</td>
+      <td>46.6</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>NL00014</td>
+      <td>2024-09-13 00:00:00</td>
+      <td>0</td>
+      <td>O3</td>
+      <td>15.6</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>NL00014</td>
+      <td>2024-09-13 00:00:00</td>
+      <td>0</td>
+      <td>PM10</td>
+      <td>6.4</td>
+      <td>9.7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>NL00014</td>
+      <td>2024-09-13 00:00:00</td>
+      <td>0</td>
+      <td>PM2.5</td>
+      <td>3.4</td>
+      <td>7.3</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>NL00014</td>
+      <td>2024-09-13 01:00:00</td>
+      <td>1</td>
+      <td>NO2</td>
+      <td>23.2</td>
+      <td>41.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<p>The number of records for each station depends on the number of days from which we start the forecasts, the number of lead time periods, and the number of species that are monitored by that station</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_days</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">days</span><span class="p">)</span>
+<span class="n">num_leadtime_hours</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">leadtime_periods</span><span class="p">)</span> <span class="o">*</span> <span class="mi">24</span>
+<span class="n">num_species</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">merged_data</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">unique</span><span class="p">())</span>
+<span class="n">num_records</span> <span class="o">=</span> <span class="n">num_days</span> <span class="o">*</span> <span class="n">num_leadtime_hours</span> <span class="o">*</span> <span class="n">num_species</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Total number of records: </span><span class="si">{:d}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_records</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Total number of records: 384
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can check that the number of records is what expected. In case the number is different it means that the station didn’t provide observations for all the dates and lead time periods</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">merged_data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">num_records</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-visualization">
+<h2>Data visualization<a class="headerlink" href="#data-visualization" title="Permalink to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">style</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;raw&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;tab:blue&#39;</span><span class="p">},</span>
+            <span class="s1">&#39;mos&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="s1">&#39;tab:orange&#39;</span><span class="p">}</span>
+        <span class="p">},</span>
+        <span class="s1">&#39;leadtime_day&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="mi">0</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;solid&#39;</span><span class="p">},</span>
+            <span class="mi">1</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;linestyle&#39;</span><span class="p">:</span> <span class="s1">&#39;dashed&#39;</span><span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prefs</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">leadtime</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return pyplot.plot() keyword arguments for given type and leadtime&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">{</span><span class="o">**</span><span class="n">style</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="p">{}),</span>
+            <span class="o">**</span><span class="n">style</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;leadtime_day&#39;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">leadtime</span><span class="p">,</span> <span class="p">{})}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_species</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a plot for one species at one station&quot;&quot;&quot;</span>
+  
+    <span class="n">allspecies</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">allspecies</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span>
+  
+    <span class="c1"># Plotting both raw and mos-corrected or just one?</span>
+    <span class="n">types</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;raw&#39;</span><span class="p">,</span> <span class="s1">&#39;mos&#39;</span><span class="p">]</span>
+             <span class="k">if</span> <span class="sa">f</span><span class="s1">&#39;conc_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s1">_micrograms_per_m3&#39;</span> <span class="ow">in</span> <span class="n">data</span><span class="o">.</span><span class="n">columns</span><span class="p">]</span>
+  
+    <span class="c1"># Plot different lines for each post-processing type and lead time day</span>
+    <span class="k">for</span> <span class="nb">type</span> <span class="ow">in</span> <span class="n">types</span><span class="p">:</span>
+        <span class="n">lead_time_day</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">lead_time_hour</span> <span class="o">//</span> <span class="mi">24</span>
+        <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="n">lead_time_day</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+            <span class="n">dt</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">lead_time_day</span> <span class="o">==</span> <span class="n">day</span><span class="p">]</span>
+  
+            <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dt</span><span class="o">.</span><span class="n">datetime</span><span class="p">,</span> <span class="n">dt</span><span class="p">[</span><span class="sa">f</span><span class="s1">&#39;conc_</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1">_micrograms_per_m3&#39;</span><span class="p">],</span>
+                    <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="nb">type</span><span class="si">}</span><span class="s1"> forecast D+</span><span class="si">{</span><span class="n">day</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span>
+                    <span class="o">**</span><span class="n">prefs</span><span class="p">(</span><span class="nb">type</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">style</span><span class="p">))</span>
+  
+    <span class="c1"># Nicer date labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">xaxis</span><span class="o">.</span><span class="n">set_major_formatter</span><span class="p">(</span><span class="n">mdates</span><span class="o">.</span><span class="n">DateFormatter</span><span class="p">(</span><span class="s1">&#39;%H</span><span class="se">\n</span><span class="si">%a</span><span class="s1"> </span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">))</span>
+  
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;$\mu$g / m$^3$&#39;</span><span class="p">)</span>
+  
+    <span class="n">date_range</span> <span class="o">=</span> <span class="s1">&#39;from &#39;</span> <span class="o">+</span> <span class="s1">&#39; to &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+                                       <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+        <span class="p">(</span><span class="s1">&#39;</span><span class="si">{species}</span><span class="s1"> at </span><span class="si">{station}</span><span class="s1"> (lat=</span><span class="si">{lat}</span><span class="s1">, lon=</span><span class="si">{lon}</span><span class="s1">, altitude=</span><span class="si">{alt}</span><span class="s1">m)</span><span class="se">\n</span><span class="s1">&#39;</span>
+         <span class="s1">&#39;</span><span class="si">{dates}</span><span class="s1">&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">species</span><span class="o">=</span><span class="n">allspecies</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                           <span class="n">station</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                           <span class="n">lat</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span>
+                           <span class="n">lon</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
+                           <span class="n">alt</span><span class="o">=</span><span class="n">station</span><span class="o">.</span><span class="n">alt</span><span class="p">,</span>
+                           <span class="n">dates</span><span class="o">=</span><span class="n">date_range</span><span class="p">))</span>
+  
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">station_plot</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">style</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Make a series of plots for a station - one for each species&quot;&quot;&quot;</span>
+  
+    <span class="c1"># Species to plot</span>
+    <span class="n">allspecies</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">species</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+  
+    <span class="c1"># Create the figure</span>
+    <span class="n">nplotsx</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">allspecies</span><span class="p">)))</span>
+    <span class="n">nplotsy</span> <span class="o">=</span> <span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">allspecies</span><span class="p">)</span> <span class="o">/</span> <span class="n">nplotsx</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="n">nplotsx</span><span class="o">*</span><span class="mi">8</span><span class="p">,</span> <span class="n">nplotsy</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.35</span><span class="p">)</span>
+  
+    <span class="c1"># Plot each species</span>
+    <span class="k">for</span> <span class="n">iplot</span><span class="p">,</span> <span class="n">species</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">allspecies</span><span class="p">):</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">nplotsy</span><span class="p">,</span> <span class="n">nplotsx</span><span class="p">,</span> <span class="n">iplot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+  
+        <span class="c1"># Extract data for just this species</span>
+        <span class="n">sdata</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">species</span> <span class="o">==</span> <span class="n">species</span><span class="p">]</span>
+  
+        <span class="n">plot_species</span><span class="p">(</span><span class="n">station</span><span class="p">,</span> <span class="n">sdata</span><span class="p">,</span> <span class="n">style</span><span class="p">,</span> <span class="n">ax</span><span class="p">)</span>
+  
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">merged_data</span><span class="o">.</span><span class="n">station_id</span><span class="o">.</span><span class="n">unique</span><span class="p">():</span>
+  
+    <span class="c1"># Extract station metadata for just this site. If there&#39;s more than one</span>
+    <span class="c1"># entry we take the latest one that&#39;s valid within this time period</span>
+    <span class="n">sdata</span> <span class="o">=</span> <span class="n">station_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+            <span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">station</span><span class="p">)</span> <span class="o">&amp;</span>
+            <span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">date_start</span> <span class="o">&lt;=</span> <span class="n">merged_data</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">&amp;</span>
+            <span class="p">(</span><span class="n">station_data</span><span class="o">.</span><span class="n">date_end</span> <span class="o">&gt;=</span> <span class="n">merged_data</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="p">]</span>
+    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">sdata</span><span class="p">),</span> <span class="s1">&#39;No metadata for site?&#39;</span>
+    <span class="n">sdata</span> <span class="o">=</span> <span class="n">sdata</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">:]</span>
+  
+    <span class="c1"># Extract air quality data for just this site</span>
+    <span class="n">adata</span> <span class="o">=</span> <span class="n">merged_data</span><span class="p">[</span><span class="n">merged_data</span><span class="o">.</span><span class="n">station_id</span> <span class="o">==</span> <span class="n">station</span><span class="p">]</span>
+  
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">adata</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">station_plot</span><span class="p">(</span><span class="n">sdata</span><span class="p">,</span> <span class="n">adata</span><span class="p">,</span> <span class="n">style</span><span class="p">)</span>
+        <span class="c1">#print(&#39;Data available for &#39; + station)</span>
+    <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;No data for &#39;</span> <span class="o">+</span> <span class="n">station</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b2ef4d3c20282c687548fcd7195440313f5db0c63fed92734237d4203630f154.png" src="_images/b2ef4d3c20282c687548fcd7195440313f5db0c63fed92734237d4203630f154.png" />
+</div>
+</div>
+</section>
+<section id="average-bias">
+<h2>Average bias<a class="headerlink" href="#average-bias" title="Permalink to this heading">#</a></h2>
+<p>The raw data is also said “biased” and the MOS data is said “unbiased” or bias-corrected. We calculate the mean bias for <span class="math notranslate nohighlight">\(NO_2\)</span> at one station by calculating the root mean squared error RMSE</p>
+<div class="math notranslate nohighlight">
+\[RMSE = \sqrt {\frac{1}{N} \sum_{h=1}^{N}(MOS_h - RAW_h)^2 }\]</div>
+<p>where N is the number of hourly forecasts of a species.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_o3</span> <span class="o">=</span> <span class="n">merged_data</span><span class="p">[</span> <span class="p">(</span><span class="n">merged_data</span><span class="p">[</span><span class="s1">&#39;species&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;O3&#39;</span><span class="p">)</span>  <span class="o">&amp;</span>   
+              <span class="p">(</span><span class="n">merged_data</span><span class="p">[</span><span class="s1">&#39;station_id&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;NL00014&#39;</span><span class="p">)</span> <span class="p">]</span> \
+              <span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;station_id&#39;</span><span class="p">,</span> <span class="s1">&#39;lead_time_hour&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+<span class="n">station_o3</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>datetime</th>
+      <th>conc_mos_micrograms_per_m3</th>
+      <th>conc_raw_micrograms_per_m3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>2024-09-13 00:00:00</td>
+      <td>15.6</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2024-09-13 01:00:00</td>
+      <td>19.2</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2024-09-13 02:00:00</td>
+      <td>21.9</td>
+      <td>14.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o3_conc_mos_micrograms_per_m3</span> <span class="o">=</span> <span class="n">station_o3</span><span class="o">.</span><span class="n">conc_mos_micrograms_per_m3</span>
+<span class="n">o3_conc_raw_micrograms_per_m3</span> <span class="o">=</span> <span class="n">station_o3</span><span class="o">.</span><span class="n">conc_raw_micrograms_per_m3</span>
+<span class="n">o3_bias</span> <span class="o">=</span> <span class="n">o3_conc_mos_micrograms_per_m3</span> <span class="o">-</span> <span class="n">o3_conc_raw_micrograms_per_m3</span>
+<span class="n">squared_o3_bias</span> <span class="o">=</span> <span class="n">o3_bias</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">squared_o3_bias</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average O3 Raw-MOS-optimised bias: </span><span class="si">{:.2f}</span><span class="s1"> micrograms/m3&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">rmse</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Average O3 Raw-MOS-optimised bias: 8.61 micrograms/m3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">date_index</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">station_o3</span><span class="p">[</span><span class="s1">&#39;datetime&#39;</span><span class="p">])</span>
+<span class="n">station_o3_time_index</span> <span class="o">=</span> <span class="n">station_o3</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="n">date_index</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;datetime&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">station_o3_time_index</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>conc_mos_micrograms_per_m3</th>
+      <th>conc_raw_micrograms_per_m3</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-09-13 00:00:00</th>
+      <td>15.6</td>
+      <td>5.8</td>
+    </tr>
+    <tr>
+      <th>2024-09-13 01:00:00</th>
+      <td>19.2</td>
+      <td>8.6</td>
+    </tr>
+    <tr>
+      <th>2024-09-13 02:00:00</th>
+      <td>21.9</td>
+      <td>14.1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;MOS-optimised O3 Forecasts&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;day&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;$\mu gm^{-3}$&quot;</span><span class="p">);</span>
+<span class="c1">#ax.set_xticks(week_index)</span>
+<span class="c1">#ax.set_xticklabels(week_index, rotation=70)</span>
+<span class="c1">#ax.xaxis.set_major_formatter(mdates.DateFormatter(&#39;%Y-%m-%d&#39;))</span>
+<span class="n">o3_mos</span> <span class="o">=</span> <span class="n">station_o3_time_index</span><span class="p">[</span><span class="s1">&#39;conc_mos_micrograms_per_m3&#39;</span><span class="p">]</span>
+<span class="n">o3_raw</span> <span class="o">=</span> <span class="n">station_o3_time_index</span><span class="p">[</span><span class="s1">&#39;conc_raw_micrograms_per_m3&#39;</span><span class="p">]</span>
+<span class="n">plt_giss_error</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">o3_mos</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">o3_mos</span> <span class="o">-</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">o3_mos</span> <span class="o">+</span> <span class="n">rmse</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">o3_mos</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21be6cbd010&gt;]
+</pre></div>
+</div>
+<img alt="_images/befb54b378465d81775e80a6afb4a10435a9ccdc15b005bce7ea82ed9002ce65.png" src="_images/befb54b378465d81775e80a6afb4a10435a9ccdc15b005bce7ea82ed9002ce65.png" />
+</div>
+</div>
+</section>
+<section id="number-of-daily-o-3-max-concentration">
+<h2>Number of daily <span class="math notranslate nohighlight">\(O_3\)</span> max concentration<a class="headerlink" href="#number-of-daily-o-3-max-concentration" title="Permalink to this heading">#</a></h2>
+<p>We calculate the number of daily maximum concentration of PM10 above 130 <span class="math notranslate nohighlight">\(\mu gm^{-3}\)</span> for the MOS and and the raw ensemble forecasts.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">o3_max_concentration_threshold</span> <span class="o">=</span> <span class="mf">130.5</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_o3_mos_max</span> <span class="o">=</span> <span class="n">station_o3</span><span class="o">.</span><span class="n">conc_mos_micrograms_per_m3</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">station_o3_mos_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(86.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_o3_raw_max</span> <span class="o">=</span> <span class="n">station_o3</span><span class="o">.</span><span class="n">conc_raw_micrograms_per_m3</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">station_o3_raw_max</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>np.float64(81.0)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">station_o3_max_daily</span> <span class="o">=</span> <span class="n">station_o3_time_index</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">freq</span><span class="o">=</span><span class="s1">&#39;D&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<span class="n">station_o3_max_daily</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>conc_mos_micrograms_per_m3</th>
+      <th>conc_raw_micrograms_per_m3</th>
+    </tr>
+    <tr>
+      <th>datetime</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2024-09-13</th>
+      <td>78.8</td>
+      <td>73.0</td>
+    </tr>
+    <tr>
+      <th>2024-09-14</th>
+      <td>84.4</td>
+      <td>81.0</td>
+    </tr>
+    <tr>
+      <th>2024-09-15</th>
+      <td>86.0</td>
+      <td>73.9</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#station_o3_mos_max_daily = station_o3_max_daily[station_o3_max_daily[&#39;conc_mos_micrograms_per_m3&#39;] &gt; </span>
+<span class="c1">#                             o3_max_concentration_threshold] #.drop([&#39;conc_raw_micrograms_per_m3&#39;], axis=1)</span>
+<span class="c1">#station_o3_mos_max_daily</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#station_o3_raw_max_daily = station_o3_max_daily[station_o3_max_daily[&#39;conc_raw_micrograms_per_m3&#39;] &gt; </span>
+<span class="c1">#                             o3_max_concentration_threshold].drop([&#39;conc_mos_micrograms_per_m3&#39;], axis=1)</span>
+<span class="c1">#station_o3_raw_max_daily</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://acp.copernicus.org/articles/23/5317/2023/">Bertrand, Meleux, Ung, Descombes, Colette - Technical note: Improving the European air quality forecast of the Copernicus Atmosphere Monitoring Service using machine learning techniques</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cams-emissions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Emissions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="proc-aq-index.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">European Air Quality Index Calculation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-objectives">Learning objectives</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#initial-setup">Initial setup</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-your-ads-api-credentials">Add your ADS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access-and-preprocessing">Data access and preprocessing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-and-download-data">Explore and download data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-stations-list">The stations list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-data-files">The data files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-visualization">Data visualization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-bias">Average bias</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#number-of-daily-o-3-max-concentration">Number of daily <span class="math notranslate nohighlight">\(O_3\)</span> max concentration</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Atmosphere Monitoring Service (CAMS), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
