@@ -6,7 +6,7 @@ root: intro
 parts:
  - caption: Data Access Tutorials
    chapters:
-   - url: https://ads-beta.atmosphere.copernicus.eu/user-guide
+   - url: https://ads.atmosphere.copernicus.eu/user-guide
      title: ADS User Guide
    - file: da-read-write
      title: Import, Reduce, Export
@@ -21,6 +21,7 @@ parts:
    - file: vis-profiles
      title: Profile Plots and Zonal Means
  - caption: Product Tutorials  
+   chapters:
    - file: cams-global-forecast-aeronet
      title: CAMS global forecasts
    - file: cams-regional-forecast
@@ -28,15 +29,25 @@ parts:
    - file: cams-global-reanalysis
      title: CAMS global reanalysis
    - file: cams-emissions
-     title: Emissions
+     title: Emissions inventories
    - file: cams-mos
      title: CAMS Model Output Statistics
  - caption: Data Processing Tutorials
    chapters:
    - file: proc-aq-index
+     title: European Air Quality Index Calculation
    - file: proc-glob-eaqi
+     title: Global Air Quality Index Calculation
    - file: proc-ozone
      title: Antarctic Ozone Hole Monitoring
+ - caption: Averaging kernels tutorials
+   chapters:
+   - file: 1-satellite-model-comparison-theory
+     title: Satellite and model comparison theory 
+   - file: 2-ozone-profile-tropomi-analysis
+     title: ozone satellite and model comparison 
+   - file: 3-no2-tropomi-cams-regional
+     title: NO2 satellite and model comparison      
  - caption: Climate Data Processing
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-c3s/
